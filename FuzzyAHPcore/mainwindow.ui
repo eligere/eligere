@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>852</width>
-    <height>954</height>
+    <width>849</width>
+    <height>975</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -21,6 +21,22 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QProgressBar" name="progressBar">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>12</height>
+       </size>
+      </property>
+      <property name="toolTip">
+       <string>progress bar</string>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -50,6 +66,22 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="checkBoxFastElaboration">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Enable fast elaboration for the SECTION1 and SECTION2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Fast Elaboration</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="questOK">
         <property name="maximumSize">
          <size>
@@ -62,17 +94,20 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="6">
-       <widget class="QPushButton" name="pushButton_Ok">
-        <property name="text">
-         <string>Ok</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="1">
        <widget class="QSpinBox" name="spinBox_Criteria">
         <property name="minimum">
@@ -141,10 +176,16 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item>
      <widget class="QScrollArea" name="scrollArea">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(200, 193, 195);</string>
+      </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -153,8 +194,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>832</width>
-         <height>69</height>
+         <width>829</width>
+         <height>205</height>
         </rect>
        </property>
       </widget>
@@ -205,18 +246,49 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_section1_saveTheResults">
-        <property name="text">
-         <string>SECTION 1: Save The Results</string>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="spacing">
+         <number>34</number>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_section1_toNextSurveyed">
-        <property name="text">
-         <string>SECTION 1: Go To Next Surveyed</string>
+        <property name="topMargin">
+         <number>0</number>
         </property>
-       </widget>
+        <item>
+         <widget class="QPushButton" name="pushButton_section1_toNextSurveyed">
+          <property name="maximumSize">
+           <size>
+            <width>400</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 85, 127);</string>
+          </property>
+          <property name="text">
+           <string>SECTION 1: Go To Next Surveyed</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_section1_saveTheResults">
+          <property name="maximumSize">
+           <size>
+            <width>400</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>SECTION 1: Save The Results</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QLabel" name="label_section1_endSurveyed">
@@ -239,38 +311,69 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label_section2_surveyedNumber">
-        <property name="text">
-         <string>Surveyed number:</string>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <property name="topMargin">
+         <number>0</number>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="spinBox_section2_surveyedNumber">
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_section2_criterionNumber">
-        <property name="text">
-         <string>Criterion number:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="spinBox_section2_criterionNumber">
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-       </widget>
+        <item>
+         <widget class="QLabel" name="label_section2_surveyedNumber">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Surveyed number:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_section2_surveyedNumber">
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_section2_criterionNumber">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Criterion number:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="spinBox_section2_criterionNumber">
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_section2_saveTheResults">
@@ -340,7 +443,14 @@
      <layout class="QHBoxLayout" name="horizontalLayout_2"/>
     </item>
     <item>
-     <widget class="QTextEdit" name="fuzzyResultsOnscreen"/>
+     <widget class="QTextEdit" name="fuzzyResultsOnscreen">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>150</height>
+       </size>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -349,7 +459,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>852</width>
+     <width>849</width>
      <height>21</height>
     </rect>
    </property>
