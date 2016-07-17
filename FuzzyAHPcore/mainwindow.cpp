@@ -1904,6 +1904,46 @@ void MainWindow::section2_calculations()
     }
 
 
+    // FINAL_SCORE SECTION
+    qryDelete.prepare("DELETE FROM final_score WHERE quest_id=:quest_id");
+    qryDelete.bindValue(":quest_id",currentQuest.toInt());
+    if( !qryDelete.exec() )
+        qDebug() << qryDelete.lastError().text();
+    else
+        qDebug()<<"Delete!";
+
+
+
+    float final_score = 0.0;
+    for (int j=0; j<num_alternative; j++)
+    {
+        final_score = 0.0;
+        for (int i=0; i<num_criteria; i++)
+        {
+
+            final_score += wS2Total.at(i).at(j)*wS1.at(i);
+        }
+        outcomeText = "final_score: "+QString::number(final_score);
+        ui->fuzzyResultsOnscreen->append(outcomeText);
+
+        qry.prepare("INSERT INTO final_score(quest_id,date, alternative, value)"
+                    "VALUES(:quest_id,:date,:alternative,:value)");
+
+        qry.bindValue(":quest_id",currentQuest.toInt());
+        qry.bindValue(":date",now);
+        qry.bindValue(":alternative",j);
+        qry.bindValue(":value",final_score);
+
+        if( !qry.exec() )
+            qDebug() << qry.lastError().text();
+        else
+            qDebug()<<"Inserted!"<<outcomeText;
+
+
+    }
+
+
+
     if(section2_calculations_more)
         section2_calculations_more = false;
 

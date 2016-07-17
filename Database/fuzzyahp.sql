@@ -6,6 +6,7 @@
 -- Generation Time: Mar 23, 2016 at 10:42 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
+use fuzzyahp;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
