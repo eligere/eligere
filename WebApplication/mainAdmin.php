@@ -5,7 +5,7 @@ if(!isset($_SESSION))
     }
 
     include "connection.php";
-    include "getCriteria.php";
+    include "getDataFromDataBase.php";
     	
    ?>
 
@@ -36,7 +36,7 @@ if(!isset($_SESSION))
 			if ($_SESSION['enableAdmin']){
 				//insert data
 				echo  "<div class='row'>
-	    				  <form class='form-inline' action='insertData.php'>
+	    				  <form class='form-inline' action='insertQuestionnarie.php'>
 					     	<button type='submit' name='add_alt' class='btn btn-default'>Insert New Questionnarie</button>
 					     </form> 
     				   </div>

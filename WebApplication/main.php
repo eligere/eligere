@@ -5,7 +5,7 @@ if(!isset($_SESSION))
     }
 
     include "connection.php";
-    include "getCriteria.php";
+    include "getDataFromDataBase.php";
     
     $error = '';
     $success = '';
@@ -106,7 +106,7 @@ if(!isset($_SESSION))
 	  	<?php   	 			
 			if ($_SESSION['enableQuest']){							
 				echo "<h3>Select the questionnaire</h3>";
-				echo "<form class='form-inline' action='Q1.php'>
+				echo "<form class='form-inline' action='getPreferences.php'>
 				      		<button type='submit' name='add_alt' class='btn btn-default'> $q </button>
 					  </form>";
 				

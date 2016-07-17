@@ -7,7 +7,7 @@ if(!isset($_SESSION))
     //connessione al db
     
     include "connection.php";   
-	include "getCriteria.php";
+	include "getDataFromDataBase.php";
 	
 	if(!isset($_SESSION['thisQuest'])){
 		$_SESSION['thisQuest'] = 0;	
@@ -117,13 +117,13 @@ if(!isset($_SESSION))
       <div class="col-sm-6">
 			<button type="submit"  name="" class="btn btn-default">
 			<span  aria-hidden="true"></span>
-				<a href="insertAlternative.php"> Prev Section </a>
+				<a href="insertAlternativeAndCriteria.php"> Prev Section </a>
 			</button>
       </div>
       <div class="col-sm-6">
 		 <button type="submit"  name="" class="btn btn-default">
 		 <span  aria-hidden="true"></span>
-			<a href="main.php"> Menu </a>
+			<a href="mainAdmin.php"> Menu </a>
 		 </button>
       </div>
     </div>

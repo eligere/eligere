@@ -7,7 +7,7 @@
 	    
 	    
 	include "connection.php";
-	include "getCriteria.php";
+	include "getDataFromDataBase.php";
 	    
 	$error = '';
 	$success = '';

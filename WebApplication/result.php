@@ -9,7 +9,7 @@
 	    //connessione al db
 	    
 	    include "connection.php";   
-		include "getCriteria.php";
+		include "getDataFromDataBase.php";
 	}
 ?>
 
