@@ -85,4 +85,10 @@ if(!isset($_SESSION))
    
   </body>
   
+    <div class="container">	
+		<?php include 'footer.php'; ?>
+    </div>
+
+  
+  
   </html>

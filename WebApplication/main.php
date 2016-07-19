@@ -121,8 +121,9 @@ if(!isset($_SESSION))
       
       
 	 <div class="row">
-       
+        
 	  	<?php   	 			
+			// TODO - FIX DATA 
 			if ($_SESSION['enableQuest']){							
 				echo "<h3>Select the questionnaire</h3>";
 				echo "<form class='form-inline' action='getPreferences.php'>
@@ -147,5 +148,7 @@ if(!isset($_SESSION))
 
    
   </body>
-  
+      <div class="container">	
+		<?php include 'footer.php'; ?>
+    </div>
   </html>

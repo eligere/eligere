@@ -405,7 +405,7 @@ function getCriteriaAlternativeAll($conn, $quest_id, $user_id) {
 }
 function getSection1($conn, $quest_id) {
 	$array = array ();
-	$query = "SELECT * FROM resultspreferences where quest_id = $quest_id";
+	$query = "SELECT * FROM results_preferences where quest_id = $quest_id";
 	$result = $conn->query ( $query );
 	if ($result->num_rows > 0) {
 		// output data of each row
@@ -427,7 +427,7 @@ function getSection1($conn, $quest_id) {
 }
 function getSection2($conn, $quest_id) {
 	$array = array ();
-	$query = "SELECT * FROM results where quest_id = $quest_id";
+	$query = "SELECT * FROM results_suitability where quest_id = $quest_id";
 	$result = $conn->query ( $query );
 	if ($result->num_rows > 0) {
 		// output data of each row
@@ -465,7 +465,7 @@ function getFinalScore($conn, $quest_id) {
 			array_push ( $array, $obj );
 		}
 	} else {
-		//echo "0 results ";
+		echo "0 results ";
 	}
 	
 	return $array;

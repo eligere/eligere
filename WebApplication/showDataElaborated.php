@@ -23,7 +23,7 @@ if (! isset ( $_SESSION )) {
 }
 
 include "connection.php";
-include "getCriteria.php";
+include "getDataFromDataBase.php";
 
 $error = '';
 $success = '';
@@ -121,32 +121,41 @@ if ($_SESSION ['enableAdmin']) {
 			echo "<div class='table-responsive'><table class='table table-striped'>
 		    	 <thead><tr> <th>id</th>
 		    	  			<th>image</th>
+							<th>Description</th>
 	    				    <th>alterantive</th>
 	    					<th>value</th><th>quest_id</th><th>date</th>
 	    		</tr></thead><tbody>";
 			
 			foreach ( $finalScoreArray as $q ) {
+				    
 					foreach ( $altArray as $alt ) {
-					if($alt->id == $q->alternative){
-				
-						echo "<tr>
-						<td>" . $q->id . "</td>
-						<td>" .
-							"<img src='$alt->dir_path_file' alt='$alt->description' style='width:50px;height:50px;'>".
-						"</td>".
-					  	"<td>" . $q->alternative . " </td>
-						<td>" . $q->value . "</td>
-						<td>" . $q->quest_id . "</td>
-						<td>" . $q->date . "</td>					
-						</tr>";
-					}
+					
+						if($alt->id == $q->alternative){
+					
+							echo "<tr>
+							<td>" . $q->id . "</td>
+							<td>" .
+								"<img src='$alt->dir_path_file' alt='$alt->description' style='width:50px;height:50px;'>".
+							"</td>".
+							"<td>" . $alt->description . " </td>
+							<td>" . $q->alternative . " </td>
+							<td>" . $q->value . "</td>
+							<td>" . $q->quest_id . "</td>
+							<td>" . $q->date . "</td>					
+							</tr>";
+						}
 					}
 			}
 			
 							 
 			
 			echo "</tbody></table></div>";
+		}else{
+			
+			echo "ERROR";
+			
 		}
+		
 		?>
 		
 		<div class="alert alert-success">Section 1: Preferences</div>
@@ -203,6 +212,9 @@ if ($_SESSION ['enableAdmin']) {
 	</div>
 </div>
 </body>
+    <div class="container">	
+		<?php include 'footer.php'; ?>
+    </div>
 
 </html>
 
