@@ -52,7 +52,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->setupUi(this);
-
+    section2_calculations_more = true;
+    section1_calculations_more = true;
 
     connect(ui->actionInformation, SIGNAL(triggered()), this, SLOT(info()));
 
@@ -87,11 +88,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_section1_toNextSurveyed, SIGNAL(clicked()), SLOT(section1_toNext()));
     connect(ui->pushButton_section1_saveTheResults, SIGNAL(clicked()), SLOT(section1_saveResults()));
     connect(ui->pushButton_section1_calculations, SIGNAL(clicked()), SLOT(section1_calculations()));
+
+
     //Section2
-
     connect(ui->pushButton_section2, SIGNAL(clicked()), SLOT(section2_clicked()));
-
-
     connect(ui->pushButton_section2_saveTheResults, SIGNAL(clicked()), SLOT(section2_saveResults()));
     connect(ui->pushButton_section2_toNextCriterion, SIGNAL(clicked()), SLOT(section2_toNextCriterion()));
     connect(ui->pushButton_section2_toNextSurveyed, SIGNAL(clicked()), SLOT(section2_toNextSurveyed()));
@@ -127,8 +127,9 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::info(){
+    QString ms ="  <ELIGERE: a Fuzzy AHP Distributed Software Platform for Group Decision Making in Engineering Design> \n Copyright (C) 2016  by Mateusz Gospodarczyk and Stanislao Grazioso \n ELIGERE is free software: you can redistribute it and/or modify \n it under the terms of the GNU General Public License as 	\n published by the Free Software Foundation, either version 3 of the \n License, or (at your option) any later version.	\n	 This program is distributed in the hope that it will be useful,\n but WITHOUT ANY WARRANTY; without even the implied warranty of \n MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.	\n You should have received a copy of the GNU General Public License \n  along with this program.  If not, see <http://www.gnu.org/licenses/>.\n Contacts: mateusz.gospodarczyk@uniroma2.it and stanislao.grazioso@unina.it 	";
     QMessageBox msgBox;
-    msgBox.setText(" <ELIGERE: a Fuzzy AHP Distributed Software Platform for Group Decision Making in Engineering Design>");
+    msgBox.setText(ms);
     int ret = msgBox.exec();
 }
 
@@ -140,8 +141,7 @@ void MainWindow::loadDataFromDBGlobalVariables()
     ui->progressBar->setMaximum(100);
     ui->progressBar->setValue(0);
     ui->progressBar->show();
-    section2_calculations_more = true;
-    section1_calculations_more = true;
+
 
     ui->lineEdit->clear();
     ui->lineEdit->setText("LOAD DATA FROM DB...");
@@ -173,12 +173,12 @@ void MainWindow::loadDataFromDBGlobalVariables()
 
     QSqlRecord r2;
     qDebug() << "rowCount: " <<modelRel->rowCount();
-    for (unsigned var = 0; var <modelRel->rowCount() ; var++) {
+    for (int var = 0; var <modelRel->rowCount() ; var++) {
         r2 = modelRel->record(var);
         modelRelMap.insert(var+1,r2);
-       // qDebug() << "id:" << r2.value("id").toInt()
-       //          << "alt1,alt2"<< r2.value("alt1").toInt()
-       //          << r2.value("alt2").toInt() << "simbol"<< r2.value("simbol");
+        // qDebug() << "id:" << r2.value("id").toInt()
+        //          << "alt1,alt2"<< r2.value("alt1").toInt()
+        //          << r2.value("alt2").toInt() << "simbol"<< r2.value("simbol");
 
 
     }
@@ -193,10 +193,10 @@ void MainWindow::loadDataFromDBGlobalVariables()
     preferences->setFilter("quest_id = "+currentQuest);
     QSqlRecord pr;
     qDebug() << "preferences rowCount: " <<preferences->rowCount();
-    for (unsigned var = 0; var <preferences->rowCount() ; var++) {
+    for (int var = 0; var <preferences->rowCount() ; var++) {
         pr = preferences->record(var);
         preferencesMap.insert(var+1, pr);
-       // qDebug() << "preferences:" << pr.value("id").toInt() << "simbol"<< pr.value("simbol");
+        // qDebug() << "preferences:" << pr.value("id").toInt() << "simbol"<< pr.value("simbol");
 
     }
 
@@ -212,7 +212,7 @@ void MainWindow::loadDataFromDBGlobalVariables()
     QSqlRecord qr;
     qDebug() << "questions rowCount: " <<questions->rowCount();
     int sizeQuestions = questions->rowCount();
-    for (unsigned var = 0; var < sizeQuestions ; var++) {
+    for (int var = 0; var < sizeQuestions ; var++) {
         qr = questions->record(var);
         questionsMap.insert(qr.value("id").toInt(),qr);
         //qDebug() << "id:" << qr.value("id").toInt()
@@ -232,12 +232,13 @@ void MainWindow::loadDataFromDBGlobalVariables()
     //;
     QSqlRecord ar;
     qDebug() << "alternative rowCount: " <<alternative->rowCount();
-    for (unsigned var = 0; var <alternative->rowCount() ; var++) {
+    for (int var = 0; var <alternative->rowCount() ; var++) {
         ar = alternative->record(var);
         alternativeMap.insert(var+1,ar);
-        //qDebug() << "id:" << ar.value("id").toInt()
-        //         << "description"<< ar.value("description");
+        qDebug() << "id:" << ar.value("id").toInt()
+                 << "description"<< ar.value("description");
     }
+
 
 
     //get data for criteria
@@ -249,7 +250,7 @@ void MainWindow::loadDataFromDBGlobalVariables()
     //;
     QSqlRecord cr;
     qDebug() << "criteria rowCount: " <<criteria->rowCount();
-    for (unsigned var = 0; var <criteria->rowCount() ; var++) {
+    for (int var = 0; var <criteria->rowCount() ; var++) {
         cr = criteria->record(var);
         criteriaMap.insert(var+1,cr);
         //qDebug() << "id:" << cr.value("id").toInt()
@@ -265,7 +266,7 @@ void MainWindow::loadDataFromDBGlobalVariables()
     //;
     QSqlRecord ls;
     qDebug() << "criteria rowCount: " <<linguistic_scale->rowCount();
-    for (unsigned var = 0; var <linguistic_scale->rowCount() ; var++) {
+    for (int var = 0; var <linguistic_scale->rowCount() ; var++) {
         ls = linguistic_scale->record(var);
         linguisticMap.insert(ls.value("simbol").toString(),ls.value("id").toInt());
         //qDebug() << "id:" << ls.value("id").toInt()
@@ -307,6 +308,15 @@ void MainWindow::loadDataFromDBGlobalVariables()
     //OK
     ui->progressBar->setValue(100);
     ui->progressBar->show();
+
+
+    //select the rigth section
+    if(enableFastElaboration && section1_calculations_more){
+        ui->pushButton_section1->click();
+    }else if (enableFastElaboration && section2_calculations_more){
+        ui->pushButton_section2->click();
+    }
+
 }
 
 void MainWindow::saveGlobalVariables()
@@ -322,85 +332,89 @@ void MainWindow::saveGlobalVariables()
 void MainWindow::section1_clicked()
 {
 
-    if(section1_calculations_more && section2_calculations_more){
+    if(section1_calculations_more){
 
-    ui->lineEdit->setText("section1_clicked");
-    ui->lineEdit->setReadOnly(true);
+        ui->lineEdit->setText("section1_clicked");
+        ui->lineEdit->setReadOnly(true);
 
-    ui->spinBox_section1_surveyedNumber->show();
-    ui->label_section1_surveyedNumber->show();
-    ui->pushButton_section1_toNextSurveyed->show();
-    ui->pushButton_section1_saveTheResults->show();
+        ui->spinBox_section1_surveyedNumber->show();
+        ui->label_section1_surveyedNumber->show();
+        ui->pushButton_section1_toNextSurveyed->show();
+        ui->pushButton_section1_saveTheResults->show();
 
-    num_criteria = ui->spinBox_Criteria->value();
-    num_alternative = ui->spinBox_Alternatives->value();
-    num_surveyed = ui->spinBox_Surveyed->value();
+        num_criteria = ui->spinBox_Criteria->value();
+        num_alternative = ui->spinBox_Alternatives->value();
+        num_surveyed = ui->spinBox_Surveyed->value();
 
-    QWidget *central = new QWidget;
-    QScrollArea *scroll = ui->scrollArea;
-    QVBoxLayout *g = new QVBoxLayout(central);
-    scroll->setWidget(central);
-    scroll->setWidgetResizable(true);
-
-
-    QLabel* labelA = new QLabel(tr("Answers:"));
-    ui->verticalLayout->addWidget(labelA);
-    ui->verticalLayout->setSpacing(0);
-    ui->verticalLayout->setMargin(0);
-    ui->verticalLayout->setContentsMargins(0,0,0,0);
-    //ui->spinBox_answerSurveyed->setMaximum(r);
-
-    QLayoutItem* item;
-    while ( ( item = ui->verticalLayout->takeAt( 0 ) ) != NULL )
-    {
-        delete item->widget();
-        delete item;
-    }
-
-    int idCurrentUser = usersMap[currentUser].value("user_id").toInt();
+        QWidget *central = new QWidget;
+        QScrollArea *scroll = ui->scrollArea;
+        QVBoxLayout *g = new QVBoxLayout(central);
+        scroll->setWidget(central);
+        scroll->setWidgetResizable(true);
 
 
-    m_criteriaRowList.clear();
+        QLabel* labelA = new QLabel(tr("Answers:"));
+        ui->verticalLayout->addWidget(labelA);
+        ui->verticalLayout->setSpacing(0);
+        ui->verticalLayout->setMargin(0);
+        ui->verticalLayout->setContentsMargins(0,0,0,0);
+        //ui->spinBox_answerSurveyed->setMaximum(r);
 
-    QSqlRecord record;
-    int idQuestionRecord;
+        QLayoutItem* item;
+        while ( ( item = ui->verticalLayout->takeAt( 0 ) ) != NULL )
+        {
+            delete item->widget();
+            delete item;
+        }
+
+        int idCurrentUser = usersMap[currentUser].value("user_id").toInt();
+
+
+        m_criteriaRowList.clear();
+
+        QSqlRecord record;
+        int idQuestionRecord;
 
 
 
-    foreach (QSqlRecord questionRecord, questionsMap) {
+        foreach (QSqlRecord questionRecord, questionsMap) {
 
 
-        idQuestionRecord = questionRecord.value("id").toInt();
+            idQuestionRecord = questionRecord.value("id").toInt();
 
-        CriteriaRow* row = new CriteriaRow();
-        for(int k=1; k<=preferencesMap.size(); k++){
-            record = preferencesMap[k];
-            if( record.value("user").toInt() == idCurrentUser &&
-                    record.value("questions_id").toInt() == idQuestionRecord){
+            CriteriaRow* row = new CriteriaRow();
+            for(int k=1; k<=preferencesMap.size(); k++){
+                record = preferencesMap[k];
+                if( record.value("user").toInt() == idCurrentUser &&
+                        record.value("questions_id").toInt() == idQuestionRecord){
 
-                foreach(QAbstractButton *button, row->m_criteriaGroup->buttons())
-                    if(button->text() == record.value("simbol")){
-                        button->setChecked(true);
-                        g->addWidget(row);
-                        //ui->verticalLayout->addWidget(row);
-                        m_criteriaRowList.append(row);
-                    }
+                    foreach(QAbstractButton *button, row->m_criteriaGroup->buttons())
+                        if(button->text() == record.value("simbol")){
+                            button->setChecked(true);
+                            g->addWidget(row);
+                            //ui->verticalLayout->addWidget(row);
+                            m_criteriaRowList.append(row);
+                        }
 
+
+                }
 
             }
+        }
+
+        if(enableFastElaboration){
+            qDebug()<<"enableFastElaboration; user "<<idCurrentUser;;
+            ui->pushButton_section1_saveTheResults->click();
+            qDebug( "section1_clicked!" );
 
         }
-    }
-
-    if(enableFastElaboration){
-        qDebug()<<"enableFastElaboration; user "<<idCurrentUser;;
-        ui->pushButton_section1_saveTheResults->click();
-
-    }
 
     }else{
-        ui->fuzzyResultsOnscreen->append("the data must be reloaded");
-        ui->pushButton_section1->setToolTip("The data must be reload!");
+        ui->fuzzyResultsOnscreen->append("Section1: elaboration complete");
+        ui->fuzzyResultsOnscreen->append("Section1: call Section2");
+
+
+
     }
 
 }
@@ -475,8 +489,8 @@ void MainWindow::section1_saveResults()
         if(radioText == "---")
         {
 
-            fuzzyNo1[0]= (1.0/3.0);
-            fuzzyNo1[1]= (2.0/5.0);
+            fuzzyNo1[0]= (float)(1.0/3.0);
+            fuzzyNo1[1]= (float)(2.0/5.0);
             fuzzyNo1[2]= (1.0/2.0);
 
             results.push_back (fuzzyNo1);
@@ -484,9 +498,9 @@ void MainWindow::section1_saveResults()
 
         else if(radioText == "--")
         {
-            fuzzyNo2[0]= (2.0/5.0);
-            fuzzyNo2[1]= (1.0/2.0);
-            fuzzyNo2[2]= (2.0/3.0);
+            fuzzyNo2[0]= (float)(2.0/5.0);
+            fuzzyNo2[1]= (float)(1.0/2.0);
+            fuzzyNo2[2]= (float)(2.0/3.0);
 
             results.push_back (fuzzyNo2);
         }
@@ -494,7 +508,7 @@ void MainWindow::section1_saveResults()
         else if(radioText == "-")
         {
             fuzzyNo3[0]= (1.0/2.0);
-            fuzzyNo3[1]= (2.0/3.0);
+            fuzzyNo3[1]= (float)(2.0/3.0);
             fuzzyNo3[2]= (1.0);
 
             results.push_back (fuzzyNo3);
@@ -502,7 +516,7 @@ void MainWindow::section1_saveResults()
 
         else if(radioText == "=")
         {
-            fuzzyNo4[0]= (2.0/3.0);
+            fuzzyNo4[0]= (float)(2.0/3.0);
             fuzzyNo4[1]= (1.0);
             fuzzyNo4[2]= (3.0/2.0);
 
@@ -569,7 +583,7 @@ void MainWindow::section1_calculations()
     std::cout<<" --------------------------------- n: "<<num_criteria;
     std::cout<<" --------------------------------- r: "<<num_surveyed;
 
-    for (unsigned i=0; i<totalResults1.size(); i++)
+    for (int i=0; i<totalResults1.size(); i++)
     {
         totalResults1[i];
         std::cout << '\n';
@@ -578,10 +592,10 @@ void MainWindow::section1_calculations()
     std::vector<Eigen::Vector3f> zero;
     std::vector< std::vector<Eigen::Vector3f> > test;
 
-    for (unsigned j=0; j<num_criteria*(num_criteria-1)/2; j++)
+    for (int j=0; j<num_criteria*(num_criteria-1)/2; j++)
 
     {
-        for (unsigned i=0; i<totalResults1.size() ; i++)
+        for (int i=0; i<totalResults1.size() ; i++)
         {
             zero.push_back (totalResults1.at(i).at(j));
         }
@@ -605,7 +619,7 @@ void MainWindow::section1_calculations()
     std::vector<float> mediazTotale;
 
 
-    for (unsigned i=0; i<num_criteria*(num_criteria-1)/2; i++)
+    for (int i=0; i<num_criteria*(num_criteria-1)/2; i++)
     {
         float sommax = 0;
         float sommay = 0;
@@ -616,7 +630,7 @@ void MainWindow::section1_calculations()
         float mediaz = 0;
 
 
-        for (unsigned j=0; j<totalResults1.size() ; j++)
+        for (int j=0; j<totalResults1.size() ; j++)
         {
 
             sommax=sommax + test.at(i).at(j).x();
@@ -645,7 +659,7 @@ void MainWindow::section1_calculations()
     std::vector<float> resultSurvey; //vettore di appoggio
     std::vector< std::vector<float> > resultsSurvey;
 
-    for (unsigned i=0; i<num_criteria*(num_criteria-1)/2; i++)
+    for (int i=0; i<num_criteria*(num_criteria-1)/2; i++)
 
     {
         ui->fuzzyResultsOnscreen->append(" --------------------------------- r:"+QString::number(mediaxTotale.at(i)));
@@ -683,7 +697,7 @@ void MainWindow::section1_calculations()
     std::vector< std::vector<float> > resultsSurveyInv;
 
 
-    for (unsigned i=0; i<num_criteria*(num_criteria-1)/2; i++)
+    for (int i=0; i<num_criteria*(num_criteria-1)/2; i++)
 
     {
         std::cout<<1/mediazTotale.at(i);
@@ -719,9 +733,9 @@ void MainWindow::section1_calculations()
     std::vector< std::vector<float> > rowComparison;
     std::vector< std::vector< std::vector<float> > > Comparison;
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
-        for (unsigned j=0; j<num_criteria; j++)
+        for (int j=0; j<num_criteria; j++)
         {
 
 
@@ -758,9 +772,9 @@ void MainWindow::section1_calculations()
     Sum.z() = 0;
 
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
-        for (unsigned j=0; j<num_criteria; j++)
+        for (int j=0; j<num_criteria; j++)
         {
             Sum.x() += Comparison.at(i).at(j).at(2);
             Sum.y() += Comparison.at(i).at(j).at(1);
@@ -800,13 +814,13 @@ void MainWindow::section1_calculations()
 
 
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
         Cappoggio.x() = 0;
         Cappoggio.y() = 0;
         Cappoggio.z() = 0;
 
-        for (unsigned j=0; j<num_criteria; j++)
+        for (int j=0; j<num_criteria; j++)
         {
             Cappoggio.x() += Comparison.at(i).at(j).at(0);
             Sappoggio.x() = Cappoggio.x()*SumInv.x();
@@ -832,11 +846,11 @@ void MainWindow::section1_calculations()
     std::vector<float> Vapp;
     std::vector< std::vector<float> > V;
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
         Vapp.erase(Vapp.begin(),Vapp.end());
 
-        for (unsigned j=0; j<num_criteria; j++)
+        for (int j=0; j<num_criteria; j++)
         {
             Vappoggio = 0;
 
@@ -873,9 +887,9 @@ void MainWindow::section1_calculations()
     float min;
     std::vector<float> d;
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
-        for (unsigned j=0; j<V.at(0).size(); j++)
+        for (int j=0; j<V.at(0).size(); j++)
         {
             min = 1;
             if (V.at(i).at(j) < min)
@@ -899,7 +913,7 @@ void MainWindow::section1_calculations()
 
     sumN = 0;
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
         sumN += d.at(i);
     }
@@ -909,7 +923,7 @@ void MainWindow::section1_calculations()
     std::cout<<"sumN: "<<sumN;
     std::cout << '\n';
 
-    for (unsigned j=0; j<num_criteria; j++)
+    for (int j=0; j<num_criteria; j++)
     {
         wS1Appoggio = d.at(j)/sumN;
         ui->fuzzyResultsOnscreen->append("wS1Appoggio: "+QString::number(wS1Appoggio));
@@ -935,14 +949,14 @@ void MainWindow::section1_calculations()
     QSqlQuery qry;
 
     QSqlQuery qryDelete;
-    qryDelete.prepare("DELETE FROM resultspreferences WHERE quest_id=:quest_id");
+    qryDelete.prepare("DELETE FROM results_preferences WHERE quest_id=:quest_id");
     qryDelete.bindValue(":quest_id",currentQuest.toInt());
     if( !qryDelete.exec() )
         qDebug() << qryDelete.lastError().text();
     else
         qDebug()<<"Delete!";
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
         ui->fuzzyResultsOnscreen->append("w -iesimo : "+QString::number(wS1.at(i)));
         std::cout<<"w -iesimo : "<<wS1.at(i);
@@ -965,11 +979,11 @@ void MainWindow::section1_calculations()
 
     }
 
-
-
     section1_calculations_more = false;
-
-
+    if(enableFastElaboration){
+        ui->questOK->click();
+        qDebug( "Elaboration section1 ok" );
+    }
 
 
 }
@@ -978,7 +992,7 @@ void MainWindow::section1_calculations()
 void MainWindow::section2_clicked()
 {
 
-    if(section2_calculations_more && section1_calculations_more){
+    if(section2_calculations_more){
 
         ui->lineEdit->clear();
         ui->lineEdit->setText("section: section2");
@@ -1061,7 +1075,7 @@ void MainWindow::section2_clicked()
         }
 
     }else{
-        ui->fuzzyResultsOnscreen->append("the data must be reloaded");
+        ui->fuzzyResultsOnscreen->append("Section2: eleaboration complete");
     }
 }
 
@@ -1161,8 +1175,8 @@ void MainWindow::section2_saveResults()
         if(radioText == "---")
         {
 
-            fuzzyNo1[0]= (1.0/3.0);
-            fuzzyNo1[1]= (2.0/5.0);
+            fuzzyNo1[0]= (float)(1.0/3.0);
+            fuzzyNo1[1]= (float)(2.0/5.0);
             fuzzyNo1[2]= (1.0/2.0);
 
             results2.push_back (fuzzyNo1);
@@ -1170,9 +1184,9 @@ void MainWindow::section2_saveResults()
 
         else if(radioText == "--")
         {
-            fuzzyNo2[0]= (2.0/5.0);
+            fuzzyNo2[0]= (float)(2.0/5.0);
             fuzzyNo2[1]= (1.0/2.0);
-            fuzzyNo2[2]= (2.0/3.0);
+            fuzzyNo2[2]= (float)(2.0/3.0);
 
             results2.push_back (fuzzyNo2);
         }
@@ -1180,7 +1194,7 @@ void MainWindow::section2_saveResults()
         else if(radioText == "-")
         {
             fuzzyNo3[0]= (1.0/2.0);
-            fuzzyNo3[1]= (2.0/3.0);
+            fuzzyNo3[1]= (float)(2.0/3.0);
             fuzzyNo3[2]= (1.0);
 
             results2.push_back (fuzzyNo3);
@@ -1188,7 +1202,7 @@ void MainWindow::section2_saveResults()
 
         else if(radioText == "=")
         {
-            fuzzyNo4[0]= (2.0/3.0);
+            fuzzyNo4[0]= (float)(2.0/3.0);
             fuzzyNo4[1]= (1.0);
             fuzzyNo4[2]= (3.0/2.0);
 
@@ -1246,7 +1260,7 @@ void MainWindow::section2_calculations()
     std::cout<<"- - - - - - - -  totalResults2 size: "<<totalResults2.size();
     std::cout<<'\n';
 
-    for (unsigned i=0; i<totalResults2.size() ; i++)
+    for (int i=0; i<totalResults2.size() ; i++)
     {
         std::cout<<"- - - - - - - -  totalResults2.at("<<i<<") size: "<<totalResults2.at(i).size();
         std::cout<<'\n';
@@ -1259,11 +1273,11 @@ void MainWindow::section2_calculations()
 
     std::vector< std::vector< std::vector<Eigen::Vector3f> > > superstani;
 
-    for (unsigned i=0; i<num_surveyed ; i++)
+    for (int i=0; i<num_surveyed ; i++)
     {
         stani.erase(stani.begin(),stani.end());
 
-        for (unsigned j=0; j<num_criteria ; j++)
+        for (int j=0; j<num_criteria ; j++)
         {
             stani.push_back(totalResults2.at(j+num_criteria*i));
 
@@ -1279,16 +1293,16 @@ void MainWindow::section2_calculations()
     std::cout<<"- - - - - - - -  superstani: "<<superstani.size();
     std::cout<<'\n';
 
-    for (unsigned i=0; i<superstani.size() ; i++)
+    for (int i=0; i<superstani.size() ; i++)
     {
         std::cout<<'\n';
         std::cout<<"- - - - - - - -  superstani.at("<<i<<"): "<<superstani.at(i).size();
         std::cout<<'\n';
     }
 
-    for (unsigned i=0; i<num_surveyed ; i++)
+    for (int i=0; i<num_surveyed ; i++)
     {
-        for (unsigned j=0; j<num_criteria ; j++)
+        for (int j=0; j<num_criteria ; j++)
         {
             std::cout<<'\n';
             std::cout<<"- - - - - - - -  superstani.at("<<i<<").at("<<j<<"): "<<superstani.at(i).at(j).size();
@@ -1296,11 +1310,11 @@ void MainWindow::section2_calculations()
         }
     }
 
-    for (unsigned k=0; k<num_surveyed; k++) //surveyed
+    for (int k=0; k<num_surveyed; k++) //surveyed
     {
-        for (unsigned i=0; i<num_criteria; i++) //criteria
+        for (int i=0; i<num_criteria; i++) //criteria
         {
-            for (unsigned j=0; j<(num_alternative*(num_alternative-1)/2); j++) //answers
+            for (int j=0; j<(num_alternative*(num_alternative-1)/2); j++) //answers
             {
                 std::cout << '\n';
                 std::cout << " ---------------------------------------------------------------- ";
@@ -1341,7 +1355,7 @@ void MainWindow::section2_calculations()
 
     //metto prima criteria e poi surveyed perchè devo costruire n matrici pair-wise comparison
 
-    for (unsigned j=0; j<num_criteria ; j++)  //criteria n
+    for (int j=0; j<num_criteria ; j++)  //criteria n
     {
         resultsSurvey.erase(resultsSurvey.begin(),resultsSurvey.end());
         resultsSurveyInv.erase(resultsSurveyInv.begin(),resultsSurveyInv.end());
@@ -1354,13 +1368,13 @@ void MainWindow::section2_calculations()
         mediaInv.y() = 0;
         mediaInv.z() = 0;
 
-        for (unsigned k=0; k<num_alternative*(num_alternative-1)/2 ; k++) //answer on alternatives: m*(m-1)/2
+        for (int k=0; k<num_alternative*(num_alternative-1)/2 ; k++) //answer on alternatives: m*(m-1)/2
         {
             somma.x() = 0;
             somma.y() = 0;
             somma.z() = 0;
 
-            for (unsigned i=0; i<num_surveyed; i++) //surveyed
+            for (int i=0; i<num_surveyed; i++) //surveyed
             {
                 somma.x() += superstani.at(i).at(j).at(k).x();
                 somma.y() += superstani.at(i).at(j).at(k).y();
@@ -1406,10 +1420,10 @@ void MainWindow::section2_calculations()
 
 
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
 
-        for (unsigned i=0; i<num_alternative*(num_alternative-1)/2; i++)
+        for (int i=0; i<num_alternative*(num_alternative-1)/2; i++)
         {
 
             std::cout << " --------------------------------- ";
@@ -1424,9 +1438,9 @@ void MainWindow::section2_calculations()
 
         }
     }
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
-        for (unsigned i=0; i<num_alternative*(num_alternative-1)/2; i++)
+        for (int i=0; i<num_alternative*(num_alternative-1)/2; i++)
         {
 
             std::cout << " --------------------------------- ";
@@ -1457,13 +1471,13 @@ void MainWindow::section2_calculations()
     std::vector< std::vector< std::vector<Eigen::Vector3f> > > ComparisonTotal;
 
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
-        for (unsigned i=0; i<num_alternative; i++)
+        for (int i=0; i<num_alternative; i++)
         {
             //Comparison.erase(Comparison.begin(),Comparison.end());
 
-            for (unsigned j=0; j<num_alternative; j++)
+            for (int j=0; j<num_alternative; j++)
             {
                 //rowComparison.erase(rowComparison.begin(),rowComparison.end());
 
@@ -1531,7 +1545,7 @@ void MainWindow::section2_calculations()
     SumInv.z() = 0;
     std::vector<Eigen::Vector3f> SumInvTotal;
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
         Sum.x() = 0;
         Sum.y() = 0;
@@ -1541,9 +1555,9 @@ void MainWindow::section2_calculations()
         SumInv.y() = 0;
         SumInv.z() = 0;
 
-        for (unsigned i=0; i<num_alternative; i++)
+        for (int i=0; i<num_alternative; i++)
         {
-            for (unsigned j=0; j<num_alternative; j++)
+            for (int j=0; j<num_alternative; j++)
             {
                 Sum.x() += ComparisonTotal.at(k).at(i).at(j).z();
                 Sum.y() += ComparisonTotal.at(k).at(i).at(j).y();
@@ -1570,7 +1584,7 @@ void MainWindow::section2_calculations()
     std::cout<<" SumTotal size: "<<SumTotal.size();
     std::cout << '\n';
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
         std::cout<<" SumTotal.at("<<k<<") x: "<<SumTotal.at(k).x();
         std::cout << '\n';
@@ -1585,7 +1599,7 @@ void MainWindow::section2_calculations()
     std::cout<<" SumInvTotal size: "<<SumInvTotal.size();
     std::cout << '\n';
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
         std::cout << '\n';
         std::cout << " --------------------------------- ";
@@ -1611,12 +1625,12 @@ void MainWindow::section2_calculations()
     std::vector<Eigen::Vector3f> S;
     std::vector< std::vector<Eigen::Vector3f> > STotal;
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
         C.erase(C.begin(),C.end()); //forse va in qll piu interno
         S.erase(S.begin(),S.end());
 
-        for (unsigned i=0; i<num_alternative; i++)
+        for (int i=0; i<num_alternative; i++)
         {
             Cappoggio.x() = 0; //forse va in qll piu interno
             Cappoggio.y() = 0;
@@ -1626,7 +1640,7 @@ void MainWindow::section2_calculations()
             Sappoggio.y() = 0;
             Sappoggio.z() = 0;
 
-            for (unsigned j=0; j<num_alternative; j++)
+            for (int j=0; j<num_alternative; j++)
             {
                 Cappoggio.x() += ComparisonTotal.at(k).at(i).at(j).x();
                 Sappoggio.x() = Cappoggio.x()*SumInvTotal.at(k).x();
@@ -1658,9 +1672,9 @@ void MainWindow::section2_calculations()
     std::cout << '\n';
     std::cout << " --------------------------------- ";
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
-        for (unsigned j=0; j<num_alternative; j++)
+        for (int j=0; j<num_alternative; j++)
         {
             std::cout << '\n';
             std::cout << " --------------------------------- ";
@@ -1676,9 +1690,9 @@ void MainWindow::section2_calculations()
         }
     }
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
-        for (unsigned j=0; j<num_alternative; j++)
+        for (int j=0; j<num_alternative; j++)
         {
             std::cout << '\n';
             std::cout << " --------------------------------- ";
@@ -1704,15 +1718,15 @@ void MainWindow::section2_calculations()
     std::vector< std::vector<float> > V;
     std::vector< std::vector< std::vector<float> > > VTotal;
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
         V.erase(V.begin(),V.end());
 
-        for (unsigned i=0; i<num_alternative; i++)
+        for (int i=0; i<num_alternative; i++)
         {
             Vapp.erase(Vapp.begin(),Vapp.end());
 
-            for (unsigned j=0; j<num_alternative; j++)
+            for (int j=0; j<num_alternative; j++)
             {
                 Vappoggio = 0;
 
@@ -1764,15 +1778,15 @@ void MainWindow::section2_calculations()
     std::vector<float> d;
     std::vector< std::vector<float> > dTotal;
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
         d.erase(d.begin(),d.end());
 
-        for (unsigned i=0; i<num_alternative; i++)
+        for (int i=0; i<num_alternative; i++)
         {
             min = 1;
 
-            for (unsigned j=0; j<VTotal.at(0).at(0).size(); j++)
+            for (int j=0; j<VTotal.at(0).at(0).size(); j++)
             {
 
                 if (VTotal.at(k).at(i).at(j) < min)
@@ -1801,9 +1815,9 @@ void MainWindow::section2_calculations()
     std::cout << '\n';
 
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
-        for (unsigned j=0; j<num_alternative; j++)
+        for (int j=0; j<num_alternative; j++)
         {
             std::cout << " ------------------------------------- ";
             std::cout << '\n';
@@ -1825,12 +1839,12 @@ void MainWindow::section2_calculations()
     sumN = 0;
 
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
 
         sumN = 0;
 
-        for (unsigned i=0; i<num_alternative; i++)
+        for (int i=0; i<num_alternative; i++)
         {
             sumN += dTotal.at(k).at(i);
         }
@@ -1845,7 +1859,7 @@ void MainWindow::section2_calculations()
 
 
 
-    for (unsigned i=0; i<num_criteria; i++)
+    for (int i=0; i<num_criteria; i++)
     {
         std::cout << " ------------------------------------- ";
         std::cout << '\n';
@@ -1857,11 +1871,11 @@ void MainWindow::section2_calculations()
     }
 
 
-    for (unsigned k=0; k<num_criteria; k++)
+    for (int k=0; k<num_criteria; k++)
     {
         wS2.erase(wS2.begin(),wS2.end());
 
-        for (unsigned i=0; i<num_alternative; i++)
+        for (int i=0; i<num_alternative; i++)
         {
 
             wS2Appoggio = (dTotal.at(k).at(i))/sumNTotal.at(k);
@@ -1890,7 +1904,7 @@ void MainWindow::section2_calculations()
     QString outcomeText;
 
 
-    qryDelete.prepare("DELETE FROM results WHERE quest_id=:quest_id");
+    qryDelete.prepare("DELETE FROM results_suitability WHERE quest_id=:quest_id");
     qryDelete.bindValue(":quest_id",currentQuest.toInt());
     if( !qryDelete.exec() )
         qDebug() << qryDelete.lastError().text();
@@ -1953,31 +1967,48 @@ void MainWindow::section2_calculations()
 
             final_score += wS2Total.at(i).at(j)*wS1.at(i);
         }
-        outcomeText = "final_score: "+QString::number(final_score);
-        ui->fuzzyResultsOnscreen->append(outcomeText);
+        outcomeText = "Alt:"+QString::number(j)+"Final_score: "+QString::number(final_score)+" saved.";
+
 
         qry.prepare("INSERT INTO final_score(quest_id,date, alternative, value)"
                     "VALUES(:quest_id,:date,:alternative,:value)");
 
+        QSqlRecord ar = alternativeMap.value(j+1);
+        int id_alt = ar.value("id").toInt();
+
         qry.bindValue(":quest_id",currentQuest.toInt());
         qry.bindValue(":date",now);
-        qry.bindValue(":alternative",j);
+        qry.bindValue(":alternative",id_alt);
         qry.bindValue(":value",final_score);
 
-        if( !qry.exec() )
-            qDebug() << qry.lastError().text();
-        else
-            qDebug()<<"Inserted!"<<outcomeText;
 
+        if( !qry.exec() ){
+            qDebug() << qry.lastError().text();
+        }else{
+            qDebug()<<"Inserted!"<<outcomeText<<" id_alt:"<<QString::number(id_alt);
+            ui->fuzzyResultsOnscreen->append(outcomeText);
+        }
 
     }
 
+    // update questionnaire table
+    qry.prepare("UPDATE questionnaire SET elaborated=:elaborated, elaboration_date=:date WHERE id=:quest_id");
+    qry.bindValue(":quest_id",currentQuest.toInt());
+    qry.bindValue(":date",now);
+    qry.bindValue(":elaborated",1);
+
+    if( !qry.exec() ){
+        qDebug() << "UPDATE ERROR";
+    }else{
+        qDebug() << "UPDATE OK";
+        ui->fuzzyResultsOnscreen->append("update questionnaire ok");
+    }
 
 
     if(section2_calculations_more)
         section2_calculations_more = false;
 
-    ui->pushButton_section2->setToolTip("The data must be reload!");
+    ui->pushButton_section2->setToolTip("End");
 
 
 }
