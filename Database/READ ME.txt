@@ -11,4 +11,9 @@ DATABASE:
 
 	xampp control panel->mysql->admin(http://localhost/phpmyadmin/)->
 	database->create database(name it "fuzzyahp")->
-	import->choose file->.../eligere/Database/fuzzyahp.sql 
+	import->choose file->.../eligere/Database/fuzzyahp20160719.sql 
+
+
+VER:
+fuzzyahp20160719: rename results in results_suitability, resultspreferences in results_preferences
+                  
