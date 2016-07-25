@@ -338,9 +338,12 @@ if(isset($_POST['add_criteria'])){
 
 	</div>
 	
-	
+	      <div class="container">	
+		<?php include 'footer.php'; ?>
+    </div>
 	
  	</body>
+	
   
  </html>
  

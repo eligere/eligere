@@ -48,6 +48,8 @@ if(!isset($_SESSION))
 	  <?php 
 	  $msg =  "";
 	  include 'staticNavBar.php'; ?>
+	 
+	  
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
       
@@ -62,9 +64,14 @@ if(!isset($_SESSION))
       <div class="row">
 	      <div class="col-md-4">
 		      <form class="form-signin" id = "login_form" action="main.php" method="POST">
-		        	<input type="text" name="yourname" class="form-control" required="required"  placeholder="Name">
-		        	<input type="email" name="email" required="required"  class="form-control" id="email" placeholder="Email address">        	       
-		        	<input type="password" id="inputPassword" name="passwordValue" class="form-control" placeholder="Password" required=""> 
+		        	
+					<input type="text"    name="yourname" class="form-control" required="required"  placeholder="Name">
+		        	<input type="email"   name="email" required="required"  class="form-control" id="email" placeholder="Email address">     
+
+					<input type="text"    name="job" class="form-control" id="jobs" required="required"  placeholder="Occupation">
+					<input type="hidden"  name="job_hidden_name" id="job_hidden" value="">
+			
+		        	<input type="password" id="inputPassword" name="passwordValue" class="form-control" placeholder="Password Survey" required=""> 
 		        	
 		        	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>		      	
 		      </form>
@@ -82,6 +89,10 @@ if(!isset($_SESSION))
       </div>
 
     </div>
+	
+	
+	
+	
 
 
     <div class="container">	
@@ -89,5 +100,20 @@ if(!isset($_SESSION))
     </div>
 
 </body>
+
+
+<script>
+$(function() {
+    $( "#jobs" ).autocomplete({
+		maxResults: 4,
+        source: 'ajax.php',
+		select: function(event, ui) {
+		  $('#job_hidden').val(ui.item.id);
+	  }
+    });
+});
+</script>
+
+
 
 </html>

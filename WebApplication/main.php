@@ -30,6 +30,9 @@ if(!isset($_SESSION))
     $success = '';
 
 	if(!isset($_SESSION['enableQuest'])){
+		
+		$job_cat = $_POST['job_hidden_name'];
+		
 		if(isset($_POST['email']))
 			$_SESSION['email_session']      = $_POST['email'];
 		if(isset($_POST['yourname']))
@@ -52,8 +55,8 @@ if(!isset($_SESSION))
 				$_SESSION['user_id'] = $row['id'];
 						 
 		} else {			
-			$sql_user = "INSERT INTO user (first_name, last_name, email,insert_date)
-			VALUES ('$_SESSION[yourname_session]',' ','$_SESSION[email_session]','$today')";
+			$sql_user = "INSERT INTO user (first_name, last_name, email, insert_date, field_expert)
+			VALUES ('$_SESSION[yourname_session]',' ','$_SESSION[email_session]','$today', $job_cat)";
 			if ($conn->query($sql_user) === TRUE) {
 				 $success =  "RECORD INSERITO CON SUCCESSO";
 			} else {

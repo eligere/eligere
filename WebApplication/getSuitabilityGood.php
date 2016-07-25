@@ -149,7 +149,6 @@ if(!isset($_SESSION))
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Section</a></li>
     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Criteria</a></li>
     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Linguistic scale for importance</a></li>
-	<li role="presentation"><a href="#alts" aria-controls="alts" role="tab" data-toggle="tab">All alternatives</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -200,43 +199,7 @@ if(!isset($_SESSION))
 	    					    
 		    ?>
 	    </table>
-		
    </div>
-   </div>
-   
-       <div role="tabpanel" class="tab-pane" id="alts">
-        
-		  <div class="col-md-4">  		  		
-				    <?php 
-					
-						echo "<table class='table text-center table-hover  table-bordered'>";
-							echo "<tr>";
-								foreach ($arrayAlternative as $alt) {
-									
-									echo "<td class='alert alert-success text-center'> ". $alt->name."</td> ";
-												
-								}
-							echo "</tr>";
-							echo "<tr>";
-								foreach ($arrayAlternative as $alt) {
-									
-									$src = $alt->dir_path."/".scandir($alt->dir_path)[2];
-									echo "<td>";
-										echo "<img src='$src' alt='$alt->description' style='width:150px;height:150px;'>"; 
-									echo "</td>";
-												
-								}
-							echo "</tr>";
-						echo "</table>";
-					    
-				    ?>
-		 
-		  </div>  
-
-
-	</div>
-   
-
    </div>
 	 
 
@@ -317,48 +280,13 @@ if(!isset($_SESSION))
 								echo "<div class='item'>";							
 							echo "<table class='table table-hover text-center table-bordered' >";
 							
-							echo "<tr>
-									  									  
-									  <table class='table text-center table-hover  table-bordered'>
-									      <tr>
-												
-													<td class='alert alert-success text-center'> ". $alt1->name."</td> 
-												
-												<td>
-													Vs.
-												</td>
-												
-													<td class='alert alert-success text-center'> ". $alt2->name."</td> 
-												
-										  </tr>
-										  <tr>
-												<td>
-													<img src='$src1' alt='$alt1->description' style='width:350px;height:350px;'> 
-												</td>
-												<td>
-												
-												</td>
-												<td>
-													<img src='$src2' alt='$alt2->description' style='width:350px;height:350px;'> 
-												</td>
-										  </tr>
-										  <tr>
-												
-													<td class='alert  text-center'> ". $alt1->description."</td> 
-												
-												<td>
-													
-												</td>
-												
-													<td class='alert  text-center'> ". $alt2->description."</td> 
-												
-										  </tr>
-									  </table>
-									  
-											
+							echo "<tr><td class='alert alert-success text-center'> ". $alt1->name."</td> 
+									  <td class='alert alert-success text-center'>  </td> 
+									  <td class='alert alert-success text-center'> ". $alt2->name."  </td>
 								  </tr>";
 							echo "<tr>
 										  <td > 
+											<img src='$src1' alt='$alt1->description' style='width:200px;height:200px;'>    							 
 										 </td>";
 										 echo "<td> ";
 										 echo " <table class='table text-center table-hover  table-bordered' >";
@@ -380,7 +308,7 @@ if(!isset($_SESSION))
 											$q =  "q".(string)$count_quest;
 											echo "<tr>";
 											echo "	 <input type='hidden'  name='$f-$q'   value='$cri->id' />";
-											echo "	<td style='min-width:250px'>  $cri->description </td>";
+											echo "	<td>  $cri->description </td>";
 										 
 											foreach ($arrayLinguisticScale as $value) {
 												$r =  "r".(string)$count_quest;
@@ -393,48 +321,36 @@ if(!isset($_SESSION))
     							 
     							 	$count_quest = $count_quest + 1;
     							 }
-    							 
+								 
 
 								  
     							 echo "</table>";
 								 
-								 echo "<tr>
-									  									  
-									  <table class='table text-center table-hover  table-bordered'>
-									      <tr>
-												
-													<td><a class='left' href='#myCarousel' role='button' data-slide='prev'>
-													   <button type='submit'  >
-													   <span class='glyphicon glyphicon-chevron-left'> </span>Prev alternative </button> 
-												   </a></td> 
-												
-												<td>
-													&nbsp".$counter." of ".$total_compar."&nbsp
-												</td>
-												
-													<td><a class='right' href='#myCarousel' role='button' data-slide='next'>
-									   <button type='submit'  > 
-											Next alternative<span class='glyphicon glyphicon-chevron-right'> </span> </button> 
-									   </a></td> 
-												
-										  </tr>
-	
-									  </table>
-									  
-											
-								  </tr>";
-								 
-
-										
+    							 echo "<a class='left' href='#myCarousel' role='button' data-slide='prev'>
+    						<button type='submit'  >
+    						<span class='glyphicon glyphicon-chevron-left'> </span>Prev alternative </button>
+    						</a>";
+    							 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$counter." of ".$total_compar."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    							 echo "<a class='right' href='#myCarousel' role='button' data-slide='next'>
+    						<button type='submit'  >
+    						Next alternative<span class='glyphicon glyphicon-chevron-right'> </span> </button>
+    						</a>";
     							 echo "</td>";
     							 
-								 echo "<td > 
+    						echo "<td > 
+    							 <img src='$src2' alt='$alt2->description' style='width:200px;height:200px;'> 
     				             </td></tr>";
 							
     						
     						echo " </table>";							
     						
-	
+    						
+    						
+							
+							
+							
+    						
+    							
     						echo "</div>";
 							
 							
@@ -453,7 +369,7 @@ if(!isset($_SESSION))
 
 					    
 	  </div>
-	  <br/> 
+	  
 	  <input type='submit' name="saveArray" class='btn btn-lg btn-primary btn-block' value='Save ' />
 	  
 	  </form>

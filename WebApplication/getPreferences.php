@@ -186,7 +186,7 @@ if(!isset($_SESSION))
 		<table class='table table-striped'>
 			 <thead>
 			 <tr class="alert alert-success" >
-			    <td class="col-md-1"> Id   </td>
+			    <td class="col-md-1"> Tag   </td>
 			    <td> Desc </td>
 			    <?php 
 		    	    if (isset($arrayLinguisticScale))
@@ -204,8 +204,8 @@ if(!isset($_SESSION))
 					
 					$q =  "q".(string)$count_quest;
 					echo "<tr>";
-					echo "	<td>  <input type='hidden'  name='$q'  value='$quest->id'  /> $quest->id </td>";
-					echo "	<td>".  $quest->desc." </td>";							
+					echo "	<td>  <input type='hidden'  name='$q'  value='$quest->id'  /> $quest->desc </td>";
+					echo "	<td>".  $quest->descLabel." </td>";							
 					foreach ($arrayLinguisticScale as $value) {
 						$r =  "r".(string)$count_quest;
 						echo "<td>  <input type='radio' class='btn btn-primary' required='required'  name='$r' value='$value->id'/>  </td>";
@@ -218,27 +218,7 @@ if(!isset($_SESSION))
 		</table>
 		
 		<div class="col-md-12">
-		
-		
-		
-		<table class='table table-striped'>
-			</tr>		
-			<?php 			
-				$count_quest = 1;			
-				foreach ($arrayQuestion as $quest) {					
-					$q =  "q".(string)$count_quest;
-					echo "<tr>";
-					echo "	<td>   $quest->desc </td>";
-					echo "	<td>".  $quest->descLabel." </td>";	
-					echo "</tr>";
-					$count_quest = $count_quest + 1;
-				}
-			?>
-			
-		
-		</table>
-
-		
+				
 		
 		<button type="submit" name="add_question" class="btn btn-lg btn-primary btn-block">Next Section</button>
 	
@@ -263,5 +243,7 @@ if(!isset($_SESSION))
 	</div>
 </div>
  </body>
-  
+        <div class="container">	
+		<?php include 'footer.php'; ?>
+    </div>
  </html>

@@ -196,13 +196,13 @@ if(!isset($_SESSION))
 						<div class='row'> <div class='form-group'>
 					 		<label for='nameCriInput1'>Criteria a</label>
 							<input type='hidden' name='nameCri1[]' value='$a1->id'/>					 		
-							<input type='text' name='' value='$a1->name' class='form-control' id='nameCriInput1' placeholder='' readonly='readonly' />
+							<input type='text' name='' value='$a1->description' class='form-control' id='nameCriInput1' placeholder='' readonly='readonly' />
 							
 						</div>
 						<div class='form-group'>
 							<label for='nameCriInput2'>Criteria b</label>
 							<input type='hidden' name='nameCri2[]' value='$a2->id'/>
-							<input type='text' name='' value='$a2->name'  class='form-control' id='nameCriInput2' required='' readonly='readonly' />
+							<input type='text' name='' value='$a2->description'  class='form-control' id='nameCriInput2' required='' readonly='readonly' />
 												
 							
 						</div>
@@ -272,6 +272,10 @@ if(!isset($_SESSION))
 
 
 	</div>
+	 
+      <div class="container">	
+		<?php include 'footer.php'; ?>
+    </div>
  </body>
   
  </html>
