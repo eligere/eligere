@@ -19,8 +19,7 @@
 # *********************************************************************************************************/
 
 
-QT       += sql core gui
-
+QT       += sql core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Test
@@ -30,15 +29,19 @@ INCLUDEPATH += C:/eigen-eigen-6b38706d90a9/eigen-eigen-6b38706d90a9
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-        myclass.cpp \
-        criteriarow.cpp \
-    util.cpp
+           eligereserver.cpp\
+           mainwindow.cpp \
+           myclass.cpp \
+           criteriarow.cpp \
+           util.cpp \
+           eligereserver.cpp
 
 HEADERS  += mainwindow.h \
-    myclass.h \
-    criteriarow.h \
-    util.h
+            eligereserver.h\
+            myclass.h \
+            criteriarow.h \
+            util.h \
+            eligereserver.h
 
 FORMS    += mainwindow.ui
 

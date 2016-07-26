@@ -29,6 +29,7 @@
 #include <Eigen/Core>
 #include <QtSql>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -46,7 +47,7 @@ public:
     QList<CriteriaRow*> m_criteriaRowList;
 
 public slots:
-     void loadDataFromDBGlobalVariables();
+     void loadDataFromDBGlobalVariables(int fast, QString socketQuestId);
      void saveGlobalVariables();
      //Section1
      void section1_clicked();
@@ -94,6 +95,7 @@ private:
     // database connection objects: table mapping
     QSqlTableModel *model;
     QSqlTableModel *quest;
+    QSqlTableModel *questionnaire;
     QSqlTableModel *linguistic_scale;
     QSqlTableModel *criteria;
     QSqlRelationalTableModel *preferences;
@@ -118,6 +120,7 @@ private:
     int typeIndex;
     bool section2_calculations_more = true;
     bool section1_calculations_more = true;
+    bool elaborationSurvey = true;
 
 private slots:
 

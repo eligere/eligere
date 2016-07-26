@@ -42,19 +42,20 @@
 #include <QMessageBox>
 #include "util.h"
 
+
 //MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
 //    : QMainWindow(parent, flags),
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
 
+
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+{
 
     ui->setupUi(this);
     section2_calculations_more = true;
-    section1_calculations_more = true;
 
+    section1_calculations_more = true;
     connect(ui->actionInformation, SIGNAL(triggered()), this, SLOT(info()));
 
     Util util;
@@ -81,7 +82,9 @@ MainWindow::MainWindow(QWidget *parent) :
     myClass = new MyClass(ui);
     //Pushbuttons
     //Global
-    connect(ui->questOK, SIGNAL(clicked()), SLOT(loadDataFromDBGlobalVariables()));
+    int fast = 0;
+    int socketQuestId = -1;
+    connect(ui->questOK, SIGNAL(clicked()), SLOT(loadDataFromDBGlobalVariables(fast,socketQuestId)));
     //connect(ui->pushButton_Ok, SIGNAL(clicked()), SLOT(saveGlobalVariables()));
     //Section1
     connect(ui->pushButton_section1, SIGNAL(clicked()), SLOT(section1_clicked()));
@@ -135,8 +138,10 @@ void MainWindow::info(){
 
 
 //TODO
-void MainWindow::loadDataFromDBGlobalVariables()
+void MainWindow::loadDataFromDBGlobalVariables(int fast, QString socketQuestId)
 {
+
+
     ui->progressBar->setMinimum(0);
     ui->progressBar->setMaximum(100);
     ui->progressBar->setValue(0);
@@ -146,16 +151,41 @@ void MainWindow::loadDataFromDBGlobalVariables()
     ui->lineEdit->clear();
     ui->lineEdit->setText("LOAD DATA FROM DB...");
     ui->lineEdit->setReadOnly(true);
-    currentQuest =  ui->questionnarie->currentText();
-    qDebug() << "current data" << ui->questionnarie->currentText();
+    qDebug()<<"socket: "<<socketQuestId;
 
 
-    if(ui->checkBoxFastElaboration->isChecked()){
+    if(socketQuestId.length() > 0){
+        qDebug() << "ELABORAZIONE SOCKET";
+        currentQuest  = socketQuestId;
+    }else{
+        qDebug() << "ELABORAZIONE GUI";
+        currentQuest =  ui->questionnarie->currentText();
+        qDebug() << "current data" << ui->questionnarie->currentText();
+
+    }
+
+
+
+    if(ui->checkBoxFastElaboration->isChecked() || fast){
         enableFastElaboration = true;
         qDebug()<<"enableFastElaboration"<<enableFastElaboration;
     }else{
         enableFastElaboration = false;
     }
+
+
+    questionnaire = new QSqlRelationalTableModel(this);
+    questionnaire->setTable("questionnaire");
+    questionnaire->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    typeIndex = questionnaire->fieldIndex("id");
+    questionnaire->select();
+    questionnaire->setFilter("elaborated = 0");
+    QSqlRecord qur;
+    qDebug() << "questionnaire rowCount: " <<questionnaire->rowCount();
+    if(questionnaire->rowCount() < 1){
+        elaborationSurvey = false;
+    }
+
 
 
     ui->fuzzyResultsOnscreen->setText("Function: loadDataFromDBGlobalVariables");
@@ -306,16 +336,26 @@ void MainWindow::loadDataFromDBGlobalVariables()
     ui->spinBox_Surveyed->setValue(num_surveyed);
 
     //OK
-    ui->progressBar->setValue(100);
-    ui->progressBar->show();
+
+    if(elaborationSurvey){
+
+        ui->progressBar->setValue(100);
+        ui->progressBar->show();
 
 
-    //select the rigth section
-    if(enableFastElaboration && section1_calculations_more){
-        ui->pushButton_section1->click();
-    }else if (enableFastElaboration && section2_calculations_more){
-        ui->pushButton_section2->click();
+        //select the rigth section
+        if(enableFastElaboration && section1_calculations_more){
+            ui->pushButton_section1->click();
+        }else if (enableFastElaboration && section2_calculations_more){
+            ui->pushButton_section2->click();
+        }
+
+    }else{
+
+        qDebug() << "ALL data elaborated!";
+
     }
+
 
 }
 
@@ -981,7 +1021,7 @@ void MainWindow::section1_calculations()
 
     section1_calculations_more = false;
     if(enableFastElaboration){
-        ui->questOK->click();
+        loadDataFromDBGlobalVariables(1,currentQuest);
         qDebug( "Elaboration section1 ok" );
     }
 

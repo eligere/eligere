@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -22,6 +23,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
@@ -37,14 +39,18 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionInformation;
+    QAction *actionHelp;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_2;
+    QProgressBar *progressBar;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QComboBox *questionnarie;
+    QCheckBox *checkBoxFastElaboration;
     QPushButton *questOK;
+    QLineEdit *lineEdit;
     QGridLayout *gridLayout;
-    QPushButton *pushButton_Ok;
     QSpinBox *spinBox_Criteria;
     QSpinBox *spinBox_Surveyed;
     QLabel *label_Alternatives;
@@ -53,17 +59,18 @@ public:
     QLabel *label_Criteria;
     QPushButton *pushButton_section1;
     QPushButton *pushButton_section2;
-    QLineEdit *lineEdit;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_2;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *verticalLayout_3;
     QLabel *label_section1_surveyedNumber;
     QSpinBox *spinBox_section1_surveyedNumber;
-    QPushButton *pushButton_section1_saveTheResults;
+    QHBoxLayout *horizontalLayout_3;
     QPushButton *pushButton_section1_toNextSurveyed;
+    QPushButton *pushButton_section1_saveTheResults;
     QLabel *label_section1_endSurveyed;
     QSpacerItem *verticalSpacer_4;
+    QHBoxLayout *horizontalLayout_5;
     QLabel *label_section2_surveyedNumber;
     QSpinBox *spinBox_section2_surveyedNumber;
     QLabel *label_section2_criterionNumber;
@@ -80,6 +87,7 @@ public:
     QTextEdit *fuzzyResultsOnscreen;
     QMenuBar *menuBar;
     QMenu *menuFuzzy_AHP;
+    QMenu *menuHelp;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QToolBar *toolBar;
@@ -88,14 +96,25 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(852, 954);
+        MainWindow->resize(849, 975);
         MainWindow->setMaximumSize(QSize(1677721, 1677721));
+        actionInformation = new QAction(MainWindow);
+        actionInformation->setObjectName(QStringLiteral("actionInformation"));
+        actionHelp = new QAction(MainWindow);
+        actionHelp->setObjectName(QStringLiteral("actionHelp"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_2 = new QVBoxLayout(centralWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        progressBar = new QProgressBar(centralWidget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setMaximumSize(QSize(16777215, 12));
+        progressBar->setValue(0);
+
+        verticalLayout_2->addWidget(progressBar);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -112,11 +131,23 @@ public:
 
         horizontalLayout->addWidget(questionnarie);
 
+        checkBoxFastElaboration = new QCheckBox(centralWidget);
+        checkBoxFastElaboration->setObjectName(QStringLiteral("checkBoxFastElaboration"));
+        checkBoxFastElaboration->setMaximumSize(QSize(100, 100));
+
+        horizontalLayout->addWidget(checkBoxFastElaboration);
+
         questOK = new QPushButton(centralWidget);
         questOK->setObjectName(QStringLiteral("questOK"));
         questOK->setMaximumSize(QSize(100, 45));
 
         horizontalLayout->addWidget(questOK);
+
+        lineEdit = new QLineEdit(centralWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setMaximumSize(QSize(200, 16777215));
+
+        horizontalLayout->addWidget(lineEdit);
 
 
         verticalLayout_2->addLayout(horizontalLayout);
@@ -124,11 +155,6 @@ public:
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        pushButton_Ok = new QPushButton(centralWidget);
-        pushButton_Ok->setObjectName(QStringLiteral("pushButton_Ok"));
-
-        gridLayout->addWidget(pushButton_Ok, 0, 6, 1, 1);
-
         spinBox_Criteria = new QSpinBox(centralWidget);
         spinBox_Criteria->setObjectName(QStringLiteral("spinBox_Criteria"));
         spinBox_Criteria->setMinimum(1);
@@ -178,17 +204,14 @@ public:
 
         verticalLayout_2->addWidget(pushButton_section2);
 
-        lineEdit = new QLineEdit(centralWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-
-        verticalLayout_2->addWidget(lineEdit);
-
         scrollArea = new QScrollArea(centralWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setMaximumSize(QSize(16777215, 300));
+        scrollArea->setStyleSheet(QStringLiteral("background-color: rgb(200, 193, 195);"));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 832, 69));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 829, 205));
         scrollArea->setWidget(scrollAreaWidgetContents_2);
 
         verticalLayout_2->addWidget(scrollArea);
@@ -217,15 +240,27 @@ public:
 
         verticalLayout_3->addWidget(spinBox_section1_surveyedNumber);
 
-        pushButton_section1_saveTheResults = new QPushButton(centralWidget);
-        pushButton_section1_saveTheResults->setObjectName(QStringLiteral("pushButton_section1_saveTheResults"));
-
-        verticalLayout_3->addWidget(pushButton_section1_saveTheResults);
-
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(34);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(-1, 0, -1, -1);
         pushButton_section1_toNextSurveyed = new QPushButton(centralWidget);
         pushButton_section1_toNextSurveyed->setObjectName(QStringLiteral("pushButton_section1_toNextSurveyed"));
+        pushButton_section1_toNextSurveyed->setMaximumSize(QSize(400, 16777215));
+        pushButton_section1_toNextSurveyed->setStyleSheet(QStringLiteral("color: rgb(0, 85, 127);"));
 
-        verticalLayout_3->addWidget(pushButton_section1_toNextSurveyed);
+        horizontalLayout_3->addWidget(pushButton_section1_toNextSurveyed);
+
+        pushButton_section1_saveTheResults = new QPushButton(centralWidget);
+        pushButton_section1_saveTheResults->setObjectName(QStringLiteral("pushButton_section1_saveTheResults"));
+        pushButton_section1_saveTheResults->setMaximumSize(QSize(400, 16777215));
+        pushButton_section1_saveTheResults->setAutoFillBackground(false);
+        pushButton_section1_saveTheResults->setStyleSheet(QStringLiteral(""));
+
+        horizontalLayout_3->addWidget(pushButton_section1_saveTheResults);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_3);
 
         label_section1_endSurveyed = new QLabel(centralWidget);
         label_section1_endSurveyed->setObjectName(QStringLiteral("label_section1_endSurveyed"));
@@ -236,29 +271,40 @@ public:
 
         verticalLayout_3->addItem(verticalSpacer_4);
 
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(-1, 0, -1, -1);
         label_section2_surveyedNumber = new QLabel(centralWidget);
         label_section2_surveyedNumber->setObjectName(QStringLiteral("label_section2_surveyedNumber"));
+        label_section2_surveyedNumber->setMaximumSize(QSize(100, 16777215));
 
-        verticalLayout_3->addWidget(label_section2_surveyedNumber);
+        horizontalLayout_5->addWidget(label_section2_surveyedNumber);
 
         spinBox_section2_surveyedNumber = new QSpinBox(centralWidget);
         spinBox_section2_surveyedNumber->setObjectName(QStringLiteral("spinBox_section2_surveyedNumber"));
+        spinBox_section2_surveyedNumber->setMaximumSize(QSize(150, 16777215));
         spinBox_section2_surveyedNumber->setMinimum(1);
         spinBox_section2_surveyedNumber->setMaximum(10);
 
-        verticalLayout_3->addWidget(spinBox_section2_surveyedNumber);
+        horizontalLayout_5->addWidget(spinBox_section2_surveyedNumber);
 
         label_section2_criterionNumber = new QLabel(centralWidget);
         label_section2_criterionNumber->setObjectName(QStringLiteral("label_section2_criterionNumber"));
+        label_section2_criterionNumber->setMaximumSize(QSize(100, 16777215));
 
-        verticalLayout_3->addWidget(label_section2_criterionNumber);
+        horizontalLayout_5->addWidget(label_section2_criterionNumber);
 
         spinBox_section2_criterionNumber = new QSpinBox(centralWidget);
         spinBox_section2_criterionNumber->setObjectName(QStringLiteral("spinBox_section2_criterionNumber"));
+        spinBox_section2_criterionNumber->setMaximumSize(QSize(150, 16777215));
         spinBox_section2_criterionNumber->setMinimum(1);
         spinBox_section2_criterionNumber->setMaximum(10);
 
-        verticalLayout_3->addWidget(spinBox_section2_criterionNumber);
+        horizontalLayout_5->addWidget(spinBox_section2_criterionNumber);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_5);
 
         pushButton_section2_saveTheResults = new QPushButton(centralWidget);
         pushButton_section2_saveTheResults->setObjectName(QStringLiteral("pushButton_section2_saveTheResults"));
@@ -310,15 +356,18 @@ public:
 
         fuzzyResultsOnscreen = new QTextEdit(centralWidget);
         fuzzyResultsOnscreen->setObjectName(QStringLiteral("fuzzyResultsOnscreen"));
+        fuzzyResultsOnscreen->setMaximumSize(QSize(16777215, 150));
 
         verticalLayout_2->addWidget(fuzzyResultsOnscreen);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 852, 21));
+        menuBar->setGeometry(QRect(0, 0, 849, 21));
         menuFuzzy_AHP = new QMenu(menuBar);
         menuFuzzy_AHP->setObjectName(QStringLiteral("menuFuzzy_AHP"));
+        menuHelp = new QMenu(menuBar);
+        menuHelp->setObjectName(QStringLiteral("menuHelp"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -331,6 +380,9 @@ public:
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
         menuBar->addAction(menuFuzzy_AHP->menuAction());
+        menuBar->addAction(menuHelp->menuAction());
+        menuHelp->addAction(actionInformation);
+        menuHelp->addAction(actionHelp);
 
         retranslateUi(MainWindow);
 
@@ -340,17 +392,25 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        actionInformation->setText(QApplication::translate("MainWindow", "Information", 0));
+        actionHelp->setText(QApplication::translate("MainWindow", "Help", 0));
+#ifndef QT_NO_TOOLTIP
+        progressBar->setToolTip(QApplication::translate("MainWindow", "progress bar", 0));
+#endif // QT_NO_TOOLTIP
         label->setText(QApplication::translate("MainWindow", "questionnarie", 0));
+#ifndef QT_NO_TOOLTIP
+        checkBoxFastElaboration->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Enable fast elaboration for the SECTION1 and SECTION2</span></p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
+        checkBoxFastElaboration->setText(QApplication::translate("MainWindow", "Fast Elaboration", 0));
         questOK->setText(QApplication::translate("MainWindow", "Ok", 0));
-        pushButton_Ok->setText(QApplication::translate("MainWindow", "Ok", 0));
         label_Alternatives->setText(QApplication::translate("MainWindow", "Alternatives: ", 0));
         label_Surveyed->setText(QApplication::translate("MainWindow", "Surveyed:", 0));
         label_Criteria->setText(QApplication::translate("MainWindow", "Criteria:", 0));
         pushButton_section1->setText(QApplication::translate("MainWindow", "SECTION 1: 'Preferences'", 0));
         pushButton_section2->setText(QApplication::translate("MainWindow", "SECTION 2: 'Suitability'", 0));
         label_section1_surveyedNumber->setText(QApplication::translate("MainWindow", "Surveyed number:", 0));
-        pushButton_section1_saveTheResults->setText(QApplication::translate("MainWindow", "SECTION 1: Save The Results", 0));
         pushButton_section1_toNextSurveyed->setText(QApplication::translate("MainWindow", "SECTION 1: Go To Next Surveyed", 0));
+        pushButton_section1_saveTheResults->setText(QApplication::translate("MainWindow", "SECTION 1: Save The Results", 0));
         label_section1_endSurveyed->setText(QApplication::translate("MainWindow", "[SECTION 1] Save The Results for the last surveyed. Then, push on 'SECTION 1: Do Calculation' to do calculus", 0));
         label_section2_surveyedNumber->setText(QApplication::translate("MainWindow", "Surveyed number:", 0));
         label_section2_criterionNumber->setText(QApplication::translate("MainWindow", "Criterion number:", 0));
@@ -362,6 +422,7 @@ public:
         pushButton_section1_calculations->setText(QApplication::translate("MainWindow", "SECTION 1: Do Calculations", 0));
         pushButton_section2_calculations->setText(QApplication::translate("MainWindow", "SECTION 2: Do Calculations", 0));
         menuFuzzy_AHP->setTitle(QApplication::translate("MainWindow", "Fuzzy AHP", 0));
+        menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
     } // retranslateUi
 
