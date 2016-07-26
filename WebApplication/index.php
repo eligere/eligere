@@ -106,6 +106,7 @@ if(!isset($_SESSION))
 $(function() {
     $( "#jobs" ).autocomplete({
 		maxResults: 4,
+		
         source: 'ajax.php',
 		select: function(event, ui) {
 		  $('#job_hidden').val(ui.item.id);

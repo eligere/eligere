@@ -56,7 +56,7 @@ if(!isset($_SESSION))
 				//insert data
 				echo  "<div class='row'>
 	    				  <form class='form-inline' action='insertQuestionnarie.php'>
-					     	<button type='submit' name='add_alt' class='btn btn-default'>Insert New Questionnarie</button>
+					     	<button type='submit' name='add_alt' class='btn btn-default'>Insert New Survey</button>
 					     </form> 
     				   </div>
 					   <div class='row'> 

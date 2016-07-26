@@ -24,6 +24,8 @@ if (! isset ( $_SESSION )) {
 
 include "connection.php";
 include "getDataFromDataBase.php";
+include "socket_connection.php";
+
 
 $error = '';
 $success = '';
@@ -37,6 +39,8 @@ if ($_SESSION ['enableAdmin']) {
 	// connessione al db
 	if (isset ( $_POST ['nameQuestForCriteria'] )) {
 		$_SESSION ['id_quest'] = $_POST ['nameQuestForCriteria'];
+		surveyElaboration($_SESSION ['id_quest']);
+		sleep(5);
 	}
 	
 	$section1Array = getSection1 ( $conn, $_SESSION ['id_quest'] );
