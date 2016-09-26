@@ -12,5 +12,5 @@ WEB APPLICATION:
 2) open a web browser and type: http://localhost/WebApplication/
 
 
-User:adim
+User:admin
 Pwd:admin
