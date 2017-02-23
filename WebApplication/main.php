@@ -32,12 +32,16 @@ if(!isset($_SESSION))
 	if(!isset($_SESSION['enableQuest'])){
 		
 		$job_cat = $_POST['job_hidden_name'];
+		$age = $_POST['age'];
+		
+		
 		
 		if(isset($_POST['email']))
 			$_SESSION['email_session']      = $_POST['email'];
 		if(isset($_POST['yourname']))
 			$_SESSION['yourname_session']   = $_POST["yourname"];
-		$_SESSION['enableQuest'] = false;
+		
+			$_SESSION['enableQuest'] = false;
 		
 		$array = getQuestByPWD($conn,$_POST['passwordValue']);	
 		foreach ($array as $a){		
@@ -48,27 +52,34 @@ if(!isset($_SESSION))
 		$today = date("Y-m-d H:i:s");
 		
 		//
-		$elect_user = "SELECT * FROM user where first_name = '".$_POST['yourname']."' and email = '".$_POST['email']."'";
+		$elect_user = "SELECT * FROM user where email = '".$_POST['email']."'";
 		$result = $conn->query($elect_user);
 		if ($result->num_rows > 0) {		
+			
 			while($row = $result->fetch_assoc()) 		
 				$_SESSION['user_id'] = $row['id'];
 						 
 		} else {			
 		
+			
+			
 			$nameSession = $_SESSION[yourname_session];
 			$mailSession = $_SESSION[email_session];		
 			
-			$sql_user = "INSERT INTO user (first_name, last_name, email, insert_date, field_expert, age)
-			VALUES ('$nameSession',' ','$mailSession','$today', $job_cat, $age)";
+			$sql_user = "INSERT INTO user (first_name, email, insert_date, field_expert, age)
+			VALUES ('$nameSession','$mailSession','$today', $job_cat, $age )";
+			
 			if ($conn->query($sql_user) === TRUE) {
 				 $success =  "RECORD INSERITO CON SUCCESSO";
 			} else {
 				 $error =  "Error: " . $sql_user . "<br>" . $conn->error;
+				 printf('error insert'.$conn->error);
 			}
 			$_SESSION['user_id'] = $conn->insert_id;
 		
 		}
+		
+		
 		
 		$elect_user = "SELECT * FROM questionnarie_user 
 					   WHERE quest_id = ".$_SESSION['questionnaire_id']."
