@@ -55,8 +55,12 @@ if(!isset($_SESSION))
 				$_SESSION['user_id'] = $row['id'];
 						 
 		} else {			
-			$sql_user = "INSERT INTO user (first_name, last_name, email, insert_date, field_expert)
-			VALUES ('$_SESSION[yourname_session]',' ','$_SESSION[email_session]','$today', $job_cat)";
+		
+			$nameSession = $_SESSION[yourname_session];
+			$mailSession = $_SESSION[email_session];		
+			
+			$sql_user = "INSERT INTO user (first_name, last_name, email, insert_date, field_expert, age)
+			VALUES ('$nameSession',' ','$mailSession','$today', $job_cat, $age)";
 			if ($conn->query($sql_user) === TRUE) {
 				 $success =  "RECORD INSERITO CON SUCCESSO";
 			} else {
