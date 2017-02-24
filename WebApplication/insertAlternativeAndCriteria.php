@@ -67,7 +67,13 @@ if(!isset($_SESSION))
 			$target_file = '';
 			
 
+			
+			
+			if (strlen(isset($_FILES['nameFile']["name"])) > 1){
 				
+				echo "ccc";
+				echo strlen(($_FILES["nameFile"]["name"]));
+				echo "eeee";	
 					
 					
 				$uploadOk = 1;
@@ -93,9 +99,7 @@ if(!isset($_SESSION))
 					$uploadOk = -1;
 				}
 				
-			
-			
-			print("dir:".$dir."target_file:".$target_file);
+			}
 			
 			// Check if $uploadOk is set to 0 by an error
 			if ($uploadOk == -1) {
@@ -148,28 +152,6 @@ if(isset($_POST['add_criteria'])){
 	}
 }
 
-if (isset($_POST['action']) && $_POST['action'] == 'deleteCri') {
-	$id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-	if ($id > 0) {
-		$query = "DELETE FROM criteria WHERE id=".$id." LIMIT 1";
-		$result = mysqli_query($conn, $query);
-		echo 'ok';
-	} else {
-		echo 'err';
-	}
-	exit; // finish execution since we only need the "ok" or "err" answers from the server.
-}
-if (isset($_POST['action']) && $_POST['action'] == 'deleteAlt') {
-	$id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-	if ($id > 0) {
-		$query = "DELETE FROM alternative WHERE id=".$id." LIMIT 1";
-		$result = mysqli_query($conn, $query);
-		echo 'ok';
-	} else {
-		echo 'err';
-	}
-	exit; // finish execution since we only need the "ok" or "err" answers from the server.
-}
 
 
 ?>
@@ -294,21 +276,19 @@ if (isset($_POST['action']) && $_POST['action'] == 'deleteAlt') {
 	    	 <thead><tr><th>ID</th><th>Name</th>
 						<th>Description</th>
 						<th>Quest ID</th>
-						<th>Path </th>
-						<th>Delete </th> 
+						<th>dir </th> 
 			</tr></thead><tbody>";
 			 $altArray = getAllAlternativeByQuestID($conn,$_SESSION['selectedQuest']);
-			 foreach ($altArray as $q){		
-			 	
-			 	echo '<tr>
-				    <td class="tdate">' . $q->id . '</td>
-				    <td class="player">' .$q->name. '</td>
-				    <td class="tinfo">' . $q->description . '</td>
-				    <td class="stake">' . $q->quest_id . '</td> <td>';
-			 	echo "<img src='$q->dir_path_file' alt='$q->description' style='width:50px;height:50px;'>";
-			 	echo '</td> <td><button class="delete_alt" data-id="' . $q->id . '"> Delete </button></td>
-		  		</tr>';
-			 
+			 foreach ($altArray as $q){				
+				echo "<tr>
+					  		<td>"  . $q->id. "</td>
+					  		<td>"  . $q->name." </td>
+							<td>"  .$q->description."</td>".
+				 		    "<td>" .$q->quest_id."</td>".
+							"<td>" .
+								"<img src='$q->dir_path_file' alt='$q->description' style='width:50px;height:50px;'>".
+							"</td>".
+					  "</tr>";
 			
 				
 				
@@ -343,16 +323,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'deleteAlt') {
 		<div class="table-responsive">
 			<?php	
 				echo "<table class='table table-striped'>
-			    	 <thead><tr><th>ID</th><th>Name</th><th>Description</th><th>Quest ID</th><th>Delete</th></tr></thead><tbody>";
+			    	 <thead><tr><th>ID</th><th>Name</th><th>Description</th><th>Quest ID</th></tr></thead><tbody>";
 				$criArray = getAllCriteriaByQuestId($conn,$_SESSION['selectedQuest']);
-				foreach ($criArray as $q){			
-					echo '<tr><td>' . $q->id .   '</td>
-						  <td>' . $q->name . '</td>
-						  <td>' . $q->description . '</td>
-		 				  <td>' . $q->quest_id . '</td>
-		    			  <td>' . '<button class="delete_cri" data-id="' . $q->id . '"> Delete </button></td>
-					</tr>';
-
+				foreach ($criArray as $q){				
+					echo "<tr><td>" . $q->id. "</td>
+						  <td>" .$q->name." </td><td>".$q->description."</td>".
+									      " </td><td>".$q->quest_id."</td></tr>";
 					
 				}	
 				echo "</tbody></table>";
@@ -367,49 +343,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'deleteAlt') {
     </div>
 	
  	</body>
-	<script>
-var currentRow, id;
-$(document).on('click','.delete_cri',function(){
-    id = $(this).attr('data-id'); 				// Get the clicked id for deletion 
-    currentRow = $(this).closest('tr'); 		// Get a reference to the row that has the button we clicked
-    $.ajax({
-        type:'post',
-        url:location.pathname, 					// sending the request to the same page we're on right now
-        data:{'action':'deleteCri','id':id},
-        success:function(response){
-            if (response == 'ok') {
-                // Hide the row nicely and remove it from the DOM once the animation is finished.
-                currentRow.slideUp(500,function(){
-                    currentRow.remove();
-                })
-            } else {
-                // throw an error modally to let the user know there was an error
-            }
-        }
-    })
-})
-
-$(document).on('click','.delete_alt',function(){
-    id = $(this).attr('data-id'); 				// Get the clicked id for deletion 
-    currentRow = $(this).closest('tr'); 		// Get a reference to the row that has the button we clicked
-    $.ajax({
-        type:'post',
-        url:location.pathname, 					// sending the request to the same page we're on right now
-        data:{'action':'deleteAlt','id':id},
-        success:function(response){
-            if (response == 'ok') {
-                // Hide the row nicely and remove it from the DOM once the animation is finished.
-                currentRow.slideUp(500,function(){
-                    currentRow.remove();
-                })
-            } else {
-                // throw an error modally to let the user know there was an error
-            }
-        }
-    })
-})
-
-</script>
+	
   
  </html>
  
