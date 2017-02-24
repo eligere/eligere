@@ -43,12 +43,6 @@
 #include "util.h"
 
 
-//MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
-//    : QMainWindow(parent, flags),
-
-
-
-
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
 
@@ -206,9 +200,7 @@ void MainWindow::loadDataFromDBGlobalVariables(int fast, QString socketQuestId)
     for (int var = 0; var <modelRel->rowCount() ; var++) {
         r2 = modelRel->record(var);
         modelRelMap.insert(var+1,r2);
-        // qDebug() << "id:" << r2.value("id").toInt()
-        //          << "alt1,alt2"<< r2.value("alt1").toInt()
-        //          << r2.value("alt2").toInt() << "simbol"<< r2.value("simbol");
+     
 
 
     }
@@ -226,8 +218,6 @@ void MainWindow::loadDataFromDBGlobalVariables(int fast, QString socketQuestId)
     for (int var = 0; var <preferences->rowCount() ; var++) {
         pr = preferences->record(var);
         preferencesMap.insert(var+1, pr);
-        // qDebug() << "preferences:" << pr.value("id").toInt() << "simbol"<< pr.value("simbol");
-
     }
 
 
@@ -245,8 +235,6 @@ void MainWindow::loadDataFromDBGlobalVariables(int fast, QString socketQuestId)
     for (int var = 0; var < sizeQuestions ; var++) {
         qr = questions->record(var);
         questionsMap.insert(qr.value("id").toInt(),qr);
-        //qDebug() << "id:" << qr.value("id").toInt()
-        //         << "description"<< qr.value("description");
     }
 
 
@@ -283,8 +271,6 @@ void MainWindow::loadDataFromDBGlobalVariables(int fast, QString socketQuestId)
     for (int var = 0; var <criteria->rowCount() ; var++) {
         cr = criteria->record(var);
         criteriaMap.insert(var+1,cr);
-        //qDebug() << "id:" << cr.value("id").toInt()
-        //         << "description"<< cr.value("description");
     }
     ui->progressBar->setValue(60);
     ui->progressBar->show();
@@ -299,8 +285,6 @@ void MainWindow::loadDataFromDBGlobalVariables(int fast, QString socketQuestId)
     for (int var = 0; var <linguistic_scale->rowCount() ; var++) {
         ls = linguistic_scale->record(var);
         linguisticMap.insert(ls.value("simbol").toString(),ls.value("id").toInt());
-        //qDebug() << "id:" << ls.value("id").toInt()
-        //         << "description"<< ls.value("simbol");
     }
 
 
@@ -398,7 +382,6 @@ void MainWindow::section1_clicked()
         ui->verticalLayout->setSpacing(0);
         ui->verticalLayout->setMargin(0);
         ui->verticalLayout->setContentsMargins(0,0,0,0);
-        //ui->spinBox_answerSurveyed->setMaximum(r);
 
         QLayoutItem* item;
         while ( ( item = ui->verticalLayout->takeAt( 0 ) ) != NULL )
@@ -432,7 +415,6 @@ void MainWindow::section1_clicked()
                         if(button->text() == record.value("simbol")){
                             button->setChecked(true);
                             g->addWidget(row);
-                            //ui->verticalLayout->addWidget(row);
                             m_criteriaRowList.append(row);
                         }
 
@@ -504,7 +486,6 @@ void MainWindow::section1_toNext()
 void MainWindow::section1_saveResults()
 {
     ui->fuzzyResultsOnscreen->append("section: section1_saveResults");
-    // inquest asezione mi salvo i dati inerenti ai criteria
     QList<QString> resultList;
 
     std::vector<Eigen::Vector3f> results;
@@ -612,7 +593,6 @@ void MainWindow::section1_calculations()
 {
 
     //TODO save the results
-
     ui->label_section1_endSurveyed->hide();
     ui->label_section1_surveyedNumber->hide();
     ui->spinBox_section1_surveyedNumber->hide();
@@ -694,7 +674,7 @@ void MainWindow::section1_calculations()
     }
 
 
-    // vettore dei resultsSurvey:
+    // vector resultsSurvey:
 
     std::vector<float> resultSurvey; //vettore di appoggio
     std::vector< std::vector<float> > resultsSurvey;
@@ -731,7 +711,7 @@ void MainWindow::section1_calculations()
     std::cout<<" resultsSurvey size: "<<resultsSurvey.size();
     std::cout << '\n';
     ui->fuzzyResultsOnscreen->append(" --------------------------------- r:"+QString::number(resultsSurvey.size()));
-    // vettore dei resultsSurveyInv:
+    // vector resultsSurveyInv:
 
     std::vector<float> resultSurveyInv;
     std::vector< std::vector<float> > resultsSurveyInv;
@@ -769,7 +749,6 @@ void MainWindow::section1_calculations()
     // Pair Wise comparison matrix _ GENERAL ALGORITHM
 
     std::vector<float> identity(3,1.0);
-    //std::vector<float> two(3,2.0);
     std::vector< std::vector<float> > rowComparison;
     std::vector< std::vector< std::vector<float> > > Comparison;
 
@@ -1556,7 +1535,6 @@ void MainWindow::section2_calculations()
     std::cout << '\n';
     std::cout << " --------------------------------- ";
     std::cout << '\n';
-    //std::cout<<" Comparison size: "<<Comparison.size();
     std::cout << '\n';
     std::cout<<" ComparisonTotal size: "<<ComparisonTotal.size();
     std::cout << '\n';
@@ -1667,12 +1645,12 @@ void MainWindow::section2_calculations()
 
     for (int k=0; k<num_criteria; k++)
     {
-        C.erase(C.begin(),C.end()); //forse va in qll piu interno
+        C.erase(C.begin(),C.end()); 
         S.erase(S.begin(),S.end());
 
         for (int i=0; i<num_alternative; i++)
         {
-            Cappoggio.x() = 0; //forse va in qll piu interno
+            Cappoggio.x() = 0; 
             Cappoggio.y() = 0;
             Cappoggio.z() = 0;
 
@@ -1692,7 +1670,7 @@ void MainWindow::section2_calculations()
                 Sappoggio.z() = Cappoggio.z()*SumInvTotal.at(k).z();
             }
 
-            C.push_back(Cappoggio); //forse questo va dentro il ciclo + interno
+            C.push_back(Cappoggio); 
             S.push_back(Sappoggio);
 
         }
@@ -1967,7 +1945,6 @@ void MainWindow::section2_calculations()
             ui->fuzzyResultsOnscreen->append(outcomeText);
 
             //insert data in db
-
 
             qry.prepare("INSERT INTO results_suitability(quest_id,date, criteria, alternative, value)"
                         "VALUES(:quest_id,:date,:criteria,:alternative,:value)");
