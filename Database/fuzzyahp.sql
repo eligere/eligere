@@ -1,33 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2016 at 10:42 AM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
-
---/**********************************************************************************************************
--- *  <ELIGERE: a Fuzzy AHP Distributed Software Platform for Group Decision Making in Engineering Design>  *
--- *   Copyright (C) 2016  by Mateusz Gospodarczyk and Stanislao Grazioso                                   *
--- *  																									  *
--- *   ELIGERE is free software: you can redistribute it and/or modify									  *
--- *   it under the terms of the GNU General Public License as 											  *
--- *   published by the Free Software Foundation, either version 3 of the 								  *
--- *   License, or (at your option) any later version.													  *
--- *																										  *
--- *   This program is distributed in the hope that it will be useful,									  *
--- *   but WITHOUT ANY WARRANTY; without even the implied warranty of										  *
--- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the										  *
--- *   GNU General Public License for more details.														  *
--- *																										  *
--- *   You should have received a copy of the GNU General Public License									  *
--- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.								  *
--- * 																										  *
--- *   Contacts: mateusz.gospodarczyk@uniroma2.it and stanislao.grazioso@unina.it 						  *
--- *********************************************************************************************************/
-
-use fuzzyahp;
+-- Creato il: Feb 27, 2017 alle 16:46
+-- Versione del server: 10.1.10-MariaDB
+-- Versione PHP: 5.5.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -45,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alternative`
+-- Struttura della tabella `alternative`
 --
 
-CREATE TABLE IF NOT EXISTS `alternative` (
+CREATE TABLE `alternative` (
   `id` int(11) NOT NULL,
   `name` char(20) NOT NULL,
   `description` text NOT NULL,
@@ -57,10 +35,10 @@ CREATE TABLE IF NOT EXISTS `alternative` (
   `user_id` char(30) NOT NULL,
   `dir_path` char(50) NOT NULL,
   `dir_path_file` char(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `alternative`
+-- Dump dei dati per la tabella `alternative`
 --
 
 INSERT INTO `alternative` (`id`, `name`, `description`, `date_insert`, `questionnaire_id`, `user_id`, `dir_path`, `dir_path_file`) VALUES
@@ -70,42 +48,51 @@ INSERT INTO `alternative` (`id`, `name`, `description`, `date_insert`, `question
 (46, 'Alternative4', 'Alternative 4 Desc', '2015-10-29', 144, '', 'media/test/Alternative4', 'media/test/Alternative4/Prototipo4_render_.jpg'),
 (47, 'Alternative5', 'Alternative 5 Desc', '2015-10-29', 144, '', 'media/test/Alternative5', 'media/test/Alternative5/Prototipo5_render_.jpg'),
 (48, 'Alternative6', 'Alternative 6 Desc ', '2015-10-29', 144, '', 'media/test/Alternative6', 'media/test/Alternative6/Prototipo6_render_.jpg'),
-(51, 'Concept 1', 'differential', '2015-12-09', 156, '', 'media/Sirena_AM/Concept 1', 'media/Sirena_AM/Concept 1/renderingdiff.JPG'),
-(52, 'Concept 2', 'articulated', '2015-12-09', 156, '', 'media/Sirena_AM/Concept 2', 'media/Sirena_AM/Concept 2/render01.JPG');
+(87, 'ciao', 'ciao', '2017-02-18', 147, '', 'media/test4/ciao', 'media/test4/ciao/1.png'),
+(88, 'alt2', 'desc alt2', '2017-02-19', 156, '', 'media/ciao/alt2', 'media/ciao/alt2/1.png'),
+(89, 'ssdfsfe', 'efssf', '2017-02-19', 147, '', 'media/test4/ssdfsfe', 'media/test4/ssdfsfe/600px-Black_body.svg.png'),
+(90, 'alt1', 'descALT1', '2017-02-23', 158, '', 'media/NewQuest/alt1', 'media/NewQuest/alt1/cpu3.png'),
+(92, 'alt2', 'descALT2', '2017-02-23', 158, '', 'media/NewQuest/alt2', 'media/NewQuest/alt2/computer_pc_PNG7702.png'),
+(93, 'alt3', 'decALT3', '2017-02-23', 158, '', 'media/NewQuest/alt3', 'media/NewQuest/alt3/this-pc-computer-icon.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `criteria`
+-- Struttura della tabella `criteria`
 --
 
-CREATE TABLE IF NOT EXISTS `criteria` (
+CREATE TABLE `criteria` (
   `id` int(11) NOT NULL,
   `name` char(20) NOT NULL,
   `description` text NOT NULL,
   `date_insert` date NOT NULL,
   `quest_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `criteria`
+-- Dump dei dati per la tabella `criteria`
 --
 
 INSERT INTO `criteria` (`id`, `name`, `description`, `date_insert`, `quest_id`) VALUES
 (23, 'C1', 'Simplicity', '2015-10-29', 144),
 (24, 'C2', 'Aesthetic design', '2015-10-29', 144),
 (25, 'C3', 'Integrability with sensors and electronics', '2015-10-29', 144),
-(26, 'Mechanism simplicity', 'simplicity of the mechanism', '2015-12-09', 156),
-(27, 'Reliability', 'reliability of the mechanism', '2015-12-09', 156),
-(28, 'Maintainability', 'maintainability of the mechanism', '2015-12-09', 156);
+(35, 'cr1', 'cr2', '2017-02-18', 147),
+(36, 'cr2', 'dddd', '2017-02-18', 147),
+(37, 'cr1', 'desc cr1', '2017-02-19', 156),
+(38, 'cr2', 'desc cr2', '2017-02-19', 156),
+(39, 'cr3', 'desc cr3', '2017-02-19', 156),
+(40, 'cr1', 'desc cr1', '2017-02-23', 158),
+(41, 'cr2', 'desc cr2', '2017-02-23', 158),
+(42, 'cr3', 'desc cr3', '2017-02-23', 158);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `criteria_alternative`
+-- Struttura della tabella `criteria_alternative`
 --
 
-CREATE TABLE IF NOT EXISTS `criteria_alternative` (
+CREATE TABLE `criteria_alternative` (
   `id` int(11) NOT NULL,
   `alt1` int(11) NOT NULL,
   `alt2` int(11) NOT NULL,
@@ -114,10 +101,10 @@ CREATE TABLE IF NOT EXISTS `criteria_alternative` (
   `user_id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `linguistic_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=610 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `criteria_alternative`
+-- Dump dei dati per la tabella `criteria_alternative`
 --
 
 INSERT INTO `criteria_alternative` (`id`, `alt1`, `alt2`, `cri_id`, `questionnaire_id`, `user_id`, `date`, `linguistic_id`) VALUES
@@ -435,113 +422,329 @@ INSERT INTO `criteria_alternative` (`id`, `alt1`, `alt2`, `cri_id`, `questionnai
 (600, 46, 48, 25, 144, 87, '2015-12-01 18:12:46', 6),
 (601, 47, 48, 23, 144, 87, '2015-12-01 18:12:46', 4),
 (602, 47, 48, 24, 144, 87, '2015-12-01 18:12:46', 4),
-(603, 47, 48, 25, 144, 87, '2015-12-01 18:12:46', 7),
-(604, 51, 52, 26, 156, 93, '2015-12-09 11:02:23', 6),
-(605, 51, 52, 27, 156, 93, '2015-12-09 11:02:23', 3),
-(606, 51, 52, 28, 156, 93, '2015-12-09 11:02:23', 4),
-(607, 51, 52, 26, 156, 97, '2015-12-09 11:40:21', 6),
-(608, 51, 52, 27, 156, 97, '2015-12-09 11:40:21', 3),
-(609, 51, 52, 28, 156, 97, '2015-12-09 11:40:21', 4);
+(603, 47, 48, 25, 144, 87, '2015-12-01 18:12:46', 7);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `final_score`
+-- Struttura della tabella `final_score`
 --
 
-CREATE TABLE IF NOT EXISTS `final_score` (
+CREATE TABLE `final_score` (
   `id` int(11) NOT NULL,
   `quest_id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `alternative` varchar(1000) NOT NULL,
   `value` double NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `final_score`
+-- Dump dei dati per la tabella `final_score`
 --
 
 INSERT INTO `final_score` (`id`, `quest_id`, `date`, `alternative`, `value`) VALUES
-(17, 144, '2016-03-23', '43', 0.251012772),
-(18, 144, '2016-03-23', '44', 0.232264772),
-(19, 144, '2016-03-23', '45', 0.115430325),
-(20, 144, '2016-03-23', '46', 0.188354835),
-(21, 144, '2016-03-23', '47', 0.11812146),
-(22, 144, '2016-03-23', '48', 0.0948157385);
+(361, 144, '2017-02-18 23:03:56', '43', 0.251012802),
+(362, 144, '2017-02-18 23:03:56', '44', 0.232264757),
+(363, 144, '2017-02-18 23:03:56', '45', 0.115430325),
+(364, 144, '2017-02-18 23:03:56', '46', 0.188354835),
+(365, 144, '2017-02-18 23:03:56', '47', 0.118121475),
+(366, 144, '2017-02-18 23:03:56', '48', 0.0948157459);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `linguistic_scale`
+-- Struttura della tabella `job_cat`
 --
 
-CREATE TABLE IF NOT EXISTS `linguistic_scale` (
+CREATE TABLE `job_cat` (
+  `job_id` int(11) NOT NULL,
+  `job_name` varchar(100) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `job_cat`
+--
+
+INSERT INTO `job_cat` (`job_id`, `job_name`) VALUES
+(1, 'Academic Jobs Australia'),
+(2, 'Academic Jobs Europe'),
+(3, 'Accountancy'),
+(4, 'Administrative Assistant Jobs'),
+(5, 'Administrative Officer Jobs'),
+(6, 'Admissions Officer Jobs'),
+(7, 'Aeronautical Engineering'),
+(9, 'Agriculture and Food'),
+(11, 'Anatomy'),
+(12, 'Anthropology'),
+(13, 'Applied Social Work'),
+(14, 'Architecture, Building and Planning'),
+(16, 'Assistant Professor Jobs'),
+(17, 'Astronomy'),
+(18, 'Australasia'),
+(19, 'Biochemistry'),
+(20, 'Bioinformatician Jobs'),
+(21, 'Biology'),
+(22, 'Biomedical Scientist Jobs'),
+(23, 'Biophysics'),
+(24, 'Biotechnology'),
+(25, 'Botany'),
+(26, 'Building'),
+(27, 'Business and Administration'),
+(28, 'Business Development Manager Jobs'),
+(29, 'Careers Advisor Jobs'),
+(30, 'Catering'),
+(31, 'Chemical Engineering'),
+(32, 'Chemistry'),
+(33, 'Civil Engineering'),
+(34, 'Classics'),
+(35, 'Clinical Research Associate Jobs'),
+(36, 'Clinical Trial Jobs'),
+(37, 'Communication Studies'),
+(38, 'Computer Science'),
+(39, 'Computing'),
+(40, 'Country Planning'),
+(41, 'Creative Arts and Design'),
+(42, 'Design'),
+(43, 'Drama'),
+(44, 'Economics'),
+(45, 'Economist'),
+(46, 'Education'),
+(47, 'Education Studies'),
+(48, 'Electrical Engineering'),
+(49, 'Engineer'),
+(50, 'Engineering and Technology'),
+(51, 'Europe'),
+(52, 'Faculty Jobs'),
+(53, 'Fine Art'),
+(54, 'Forestry'),
+(55, 'Further Education'),
+(56, 'General Research'),
+(57, 'General Social Sciences'),
+(58, 'Genetics'),
+(59, 'Geography'),
+(60, 'Geology'),
+(61, 'Government'),
+(62, 'Graduate'),
+(63, 'Hardware'),
+(64, 'Health and Medical'),
+(65, 'History'),
+(66, 'History of Art'),
+(67, 'Hotel'),
+(68, 'HR'),
+(69, 'Human Geography'),
+(70, 'Human Resources'),
+(71, 'Humanities'),
+(72, 'Information Management'),
+(73, 'Information Science'),
+(74, 'International Office Jobs'),
+(75, 'Internet'),
+(76, 'Jobs in UAE'),
+(77, 'Journalism'),
+(78, 'KTP Associate Jobs'),
+(79, 'Laboratory Technician Jobs'),
+(80, 'Land Management'),
+(81, 'Languages'),
+(82, 'Law'),
+(83, 'Lecturer Jobs'),
+(84, 'Leisure'),
+(85, 'Leisure Management'),
+(86, 'Librarianship'),
+(87, 'Librarianship'),
+(88, 'Library Assistant Jobs'),
+(89, 'Linguistics'),
+(90, 'Literature'),
+(91, 'London Jobs'),
+(92, 'Management'),
+(93, 'Maritime Technology'),
+(94, 'Marketing'),
+(95, 'Materials Science'),
+(96, 'Mathematics'),
+(97, 'Mechanical Engineering'),
+(98, 'Media and Communications'),
+(99, 'Medical Technician Jobs'),
+(100, 'Medical Technology'),
+(101, 'Medicine'),
+(102, 'Microbiology'),
+(103, 'Midlands'),
+(104, 'Minerals Technology'),
+(105, 'Modern Languages'),
+(106, 'Molecular Biology'),
+(107, 'Music'),
+(108, 'Northern England'),
+(109, 'Northern Ireland'),
+(110, 'Nursing'),
+(111, 'Nutrition'),
+(112, 'Oceanography'),
+(113, 'Personnel'),
+(114, 'Pharmacology'),
+(115, 'Pharmacy'),
+(116, 'PhD Bursary Jobs'),
+(117, 'PhD Jobs'),
+(118, 'PhD Research Studentship Jobs'),
+(119, 'PhD Scholarships'),
+(120, 'PhD Studentships'),
+(121, 'Philosophy'),
+(122, 'Physical Sciences'),
+(123, 'Physics'),
+(124, 'Physiology'),
+(125, 'Politics and Government'),
+(126, 'Postdoc'),
+(127, 'Postdoctoral Research Assistant Jobs'),
+(128, 'Postdoctoral Research Associate Jobs'),
+(129, 'Postdoctoral Research Fellow Jobs'),
+(130, 'Postdoctoral Researcher Jobs'),
+(131, 'Postdoctoral Scientist Jobs'),
+(132, 'Production Engineering'),
+(133, 'Professor Jobs'),
+(134, 'Programme Administrator Jobs'),
+(135, 'Programme Manager Jobs'),
+(136, 'Programming'),
+(137, 'Project Manager Jobs'),
+(138, 'Project Officer Jobs'),
+(139, 'Property Management'),
+(140, 'Psychology'),
+(141, 'Public Sector'),
+(142, 'Publishing'),
+(143, 'Religion'),
+(144, 'Republic of Ireland'),
+(145, 'Research Administrator Jobs'),
+(146, 'Research Assistant Jobs'),
+(147, 'Research Associate Jobs'),
+(148, 'Research Fellow'),
+(149, 'Research Manager Jobs'),
+(150, 'Research Nurse Jobs'),
+(151, 'Research Officer Jobs'),
+(152, 'Research Scientist Jobs'),
+(153, 'Research Technician Jobs'),
+(154, 'Researcher Jobs'),
+(155, 'Science'),
+(156, 'Science Technician Jobs'),
+(157, 'Scientific'),
+(158, 'Scotland'),
+(159, 'Senior Academic Jobs'),
+(160, 'Senior Lecturer Jobs'),
+(161, 'Senior Research Assistant Jobs'),
+(162, 'Senior Research Associate Jobs'),
+(163, 'Senior Research Fellow Jobs'),
+(164, 'Social Administration'),
+(165, 'Social Policy'),
+(166, 'Social Sciences and Social Care'),
+(167, 'Sociology'),
+(168, 'Software Engineering'),
+(169, 'South East England'),
+(170, 'South West England'),
+(171, 'Sport and Leisure'),
+(172, 'Sports Coaching'),
+(173, 'Sports Management'),
+(174, 'Sports Science'),
+(175, 'Statistician Jobs'),
+(176, 'Statistics'),
+(177, 'Student Recruitment Jobs'),
+(178, 'Student Support Jobs'),
+(179, 'Teach English'),
+(180, 'Teacher Training'),
+(181, 'Teaching'),
+(182, 'Teaching Fellow Jobs'),
+(183, 'Technician Jobs'),
+(184, 'TEFL'),
+(185, 'TESL'),
+(186, 'TESOL'),
+(187, 'Theology'),
+(188, 'Town Planning'),
+(189, 'Travel'),
+(191, 'University'),
+(192, 'University Administration Jobs'),
+(193, 'University Admissions Jobs'),
+(194, 'University Jobs Abroad'),
+(195, 'University Jobs Australia'),
+(196, 'University Marketing Jobs'),
+(197, 'University Teaching UK'),
+(198, 'Veterinary Science'),
+(199, 'Visiting Professor Jobs and Visiting Lecturer Jobs'),
+(200, 'Wales'),
+(201, 'Zoology');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `linguistic_scale`
+--
+
+CREATE TABLE `linguistic_scale` (
   `id` int(11) NOT NULL,
   `description` char(50) NOT NULL,
-  `simbol` char(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `simbol` char(10) NOT NULL,
+  `num` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `linguistic_scale`
+-- Dump dei dati per la tabella `linguistic_scale`
 --
 
-INSERT INTO `linguistic_scale` (`id`, `description`, `simbol`) VALUES
-(2, 'Absolutely more important', '+++'),
-(3, 'More important', '++'),
-(4, 'Weakly more important', '+'),
-(5, 'Equally important', '='),
-(6, 'Weakly less important', '-'),
-(7, 'Less important', '--'),
-(8, 'Absolutely less important', '---');
+INSERT INTO `linguistic_scale` (`id`, `description`, `simbol`, `num`) VALUES
+(2, 'Absolutely more important', '+++', 7),
+(3, 'More important', '++', 6),
+(4, 'Weakly more important', '+', 5),
+(5, 'Equally important', '=', 4),
+(6, 'Weakly less important', '-', 3),
+(7, 'Less important', '--', 2),
+(8, 'Absolutely less important', '---', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questionnaire`
+-- Struttura della tabella `login_attempts`
 --
 
-CREATE TABLE IF NOT EXISTS `questionnaire` (
+CREATE TABLE `login_attempts` (
+  `user_id` int(11) NOT NULL,
+  `time` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `questionnaire`
+--
+
+CREATE TABLE `questionnaire` (
   `id` int(11) NOT NULL,
   `name` char(20) NOT NULL,
   `description` text NOT NULL,
   `date` datetime NOT NULL,
-  `complete` bit(1) NOT NULL,
+  `complete` bit(1) NOT NULL DEFAULT b'0',
   `dir` char(20) NOT NULL,
-  `password` char(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=latin1;
+  `password` char(30) NOT NULL,
+  `elaborated` bit(1) NOT NULL DEFAULT b'0',
+  `elaboration_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `questionnaire`
+-- Dump dei dati per la tabella `questionnaire`
 --
 
-INSERT INTO `questionnaire` (`id`, `name`, `description`, `date`, `complete`, `dir`, `password`) VALUES
-(144, 'test', 'test', '2015-10-29 13:32:24', b'0', 'media/test', 'test'),
-(145, 'Sirena', 'alternatives', '2015-11-30 11:54:05', b'0', 'media/Sirena', 'Sirena'),
-(146, 'Sirena AJP', 'Robotics for AM: Selecting alternatives', '2015-12-09 10:23:52', b'0', 'media/Sirena AJP', 'sirenaS'),
-(148, 'prova', 'prova', '2015-12-09 10:27:29', b'0', 'media/prova', 'prova'),
-(150, 'prova1', 'prova1', '2015-12-09 10:28:24', b'0', 'media/prova1', 'prova1'),
-(151, 'Sirena_AJP', 'Selecting alternatives in robotics for AM', '2015-12-09 10:45:30', b'0', 'media/Sirena_AJP', 'Sirena_AJP'),
-(153, 'testfff', 'testfff', '2015-12-09 10:47:02', b'0', 'media/testfff', 'gtgt'),
-(154, 'ddd', 'ddd', '2015-12-09 10:48:50', b'0', 'media/ddd', 'ddd'),
-(155, 'sds', 'sdd', '2015-12-09 10:50:02', b'0', 'media/sds', 'sds'),
-(156, 'Sirena_AM', 'Selecting alternatives in robotics for AJP', '2015-12-09 10:50:45', b'0', 'media/Sirena_AM', 'Sirena_AM');
+INSERT INTO `questionnaire` (`id`, `name`, `description`, `date`, `complete`, `dir`, `password`, `elaborated`, `elaboration_date`) VALUES
+(144, 'test', 'test', '2015-10-29 13:32:24', b'0', 'media/test', 'test', b'1', '2017-02-18 23:03:56'),
+(147, 'test4', 'desc test', '2017-02-18 18:21:27', b'0', 'media/test4', 'test4', b'0', '0000-00-00 00:00:00'),
+(156, 'ciao', 'ciao', '2017-02-18 23:15:13', b'0', 'media/ciao', 'ciao', b'0', '0000-00-00 00:00:00'),
+(158, 'NewQuest', 'NEW QUEST', '2017-02-23 15:30:51', b'0', 'media/NewQuest', '1234', b'0', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questionnarie_user`
+-- Struttura della tabella `questionnarie_user`
 --
 
-CREATE TABLE IF NOT EXISTS `questionnarie_user` (
+CREATE TABLE `questionnarie_user` (
   `id` int(11) NOT NULL,
   `quest_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `complete` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `questionnarie_user`
+-- Dump dei dati per la tabella `questionnarie_user`
 --
 
 INSERT INTO `questionnarie_user` (`id`, `quest_id`, `user_id`, `date`, `complete`) VALUES
@@ -552,21 +755,15 @@ INSERT INTO `questionnarie_user` (`id`, `quest_id`, `user_id`, `date`, `complete
 (70, 144, 85, '2015-12-01', 1),
 (71, 144, 86, '2015-12-01', 1),
 (72, 144, 87, '2015-12-01', 1),
-(73, 146, 89, '2015-12-09', 0),
-(74, 156, 90, '2015-12-09', 0),
-(77, 156, 93, '2015-12-09', 1),
-(78, 156, 94, '2015-12-09', 0),
-(81, 156, 97, '2015-12-09', 1),
-(82, 144, 98, '2016-01-30', 0),
-(85, 144, 101, '2016-03-23', 0);
+(89, 158, 91, '2017-02-23', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questions`
+-- Struttura della tabella `questions`
 --
 
-CREATE TABLE IF NOT EXISTS `questions` (
+CREATE TABLE `questions` (
   `date` datetime NOT NULL,
   `id` int(11) NOT NULL,
   `questionnaire` int(11) NOT NULL,
@@ -574,36 +771,39 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `cr2` int(11) NOT NULL,
   `description` char(150) NOT NULL,
   `description_long` char(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `questions`
+-- Dump dei dati per la tabella `questions`
 --
 
 INSERT INTO `questions` (`date`, `id`, `questionnaire`, `cr1`, `cr2`, `description`, `description_long`) VALUES
 ('2015-10-29 13:39:45', 44, 144, 23, 24, 'QP1', 'How important is the simplicity of the system when it is compared to aesthetic design?'),
 ('2015-10-29 13:39:45', 45, 144, 23, 25, 'QP2', 'How important is the simplicity of the system when it is compared to integrability with\r\nsensors and electronics?'),
 ('2015-10-29 13:39:45', 46, 144, 24, 25, 'QP3', 'How important is the aesthetic design of the system when it is compared to integrability\r\nwith sensors and electronics?'),
-('2015-12-09 10:59:56', 47, 156, 26, 27, 'QS1', 'Simplicity against Reliability'),
-('2015-12-09 10:59:56', 48, 156, 26, 28, 'QS2', 'Simplicity against Maintainability'),
-('2015-12-09 10:59:56', 49, 156, 27, 28, 'QS3', 'Reliability against Maintainability');
+('2017-02-23 14:45:33', 83, 156, 37, 39, 'fgt', 'fgtL'),
+('2017-02-23 14:45:46', 85, 156, 37, 38, '333', '444'),
+('2017-02-23 14:46:03', 86, 156, 38, 39, '1', '1'),
+('2017-02-23 15:32:46', 87, 158, 40, 41, 'lab1', 'desc quest 1'),
+('2017-02-23 15:32:58', 88, 158, 40, 42, 'lab2', 'desc quest 2'),
+('2017-02-23 15:33:04', 89, 158, 41, 42, 'lab3', 'desc quest 3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `question_linguistic_scale`
+-- Struttura della tabella `question_linguistic_scale`
 --
 
-CREATE TABLE IF NOT EXISTS `question_linguistic_scale` (
+CREATE TABLE `question_linguistic_scale` (
   `id` int(11) NOT NULL,
   `questions_id` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `ling_scale_id` int(11) NOT NULL,
   `quest_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `question_linguistic_scale`
+-- Dump dei dati per la tabella `question_linguistic_scale`
 --
 
 INSERT INTO `question_linguistic_scale` (`id`, `questions_id`, `user`, `ling_scale_id`, `quest_id`) VALUES
@@ -627,128 +827,113 @@ INSERT INTO `question_linguistic_scale` (`id`, `questions_id`, `user`, `ling_sca
 (93, 46, 86, 6, 144),
 (94, 44, 87, 4, 144),
 (95, 45, 87, 6, 144),
-(96, 46, 87, 6, 144),
-(97, 47, 93, 5, 156),
-(98, 48, 93, 4, 156),
-(99, 49, 93, 4, 156),
-(100, 47, 94, 4, 156),
-(101, 48, 94, 4, 156),
-(102, 49, 94, 4, 156),
-(109, 47, 97, 5, 156),
-(110, 48, 97, 3, 156),
-(111, 49, 97, 3, 156),
-(112, 44, 98, 2, 144),
-(113, 45, 98, 3, 144),
-(114, 46, 98, 4, 144),
-(118, 44, 101, 2, 144),
-(119, 45, 101, 2, 144),
-(120, 46, 101, 2, 144);
+(96, 46, 87, 6, 144);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `results`
+-- Struttura della tabella `results_preferences`
 --
 
-CREATE TABLE IF NOT EXISTS `results` (
-  `id` int(11) NOT NULL,
-  `quest_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `criteria` int(11) NOT NULL,
-  `alternative` varchar(1000) NOT NULL,
-  `value` double NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=373 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `results`
---
-
-INSERT INTO `results` (`id`, `quest_id`, `date`, `criteria`, `alternative`, `value`) VALUES
-(355, 144, '2016-03-23', 0, '0', 0.324120134),
-(356, 144, '2016-03-23', 0, '1', 0.25180003),
-(357, 144, '2016-03-23', 0, '2', 0.0693411008),
-(358, 144, '2016-03-23', 0, '3', 0.151545733),
-(359, 144, '2016-03-23', 0, '4', 0.134602696),
-(360, 144, '2016-03-23', 0, '5', 0.0685902312),
-(361, 144, '2016-03-23', 1, '0', 0.199935094),
-(362, 144, '2016-03-23', 1, '1', 0.263872504),
-(363, 144, '2016-03-23', 1, '2', 0.122180521),
-(364, 144, '2016-03-23', 1, '3', 0.24672851),
-(365, 144, '2016-03-23', 1, '4', 0.0644504204),
-(366, 144, '2016-03-23', 1, '5', 0.102832928),
-(367, 144, '2016-03-23', 2, '0', 0.212453127),
-(368, 144, '2016-03-23', 2, '1', 0.194464341),
-(369, 144, '2016-03-23', 2, '2', 0.155202925),
-(370, 144, '2016-03-23', 2, '3', 0.18792811),
-(371, 144, '2016-03-23', 2, '4', 0.135041758),
-(372, 144, '2016-03-23', 2, '5', 0.114909612);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `resultspreferences`
---
-
-CREATE TABLE IF NOT EXISTS `resultspreferences` (
+CREATE TABLE `results_preferences` (
   `id` int(11) NOT NULL,
   `criteria` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `quest_id` int(11) NOT NULL,
   `value` double NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `resultspreferences`
+-- Dump dei dati per la tabella `results_preferences`
 --
 
-INSERT INTO `resultspreferences` (`id`, `criteria`, `date`, `quest_id`, `value`) VALUES
-(40, 0, '2016-03-23 10:33:05', 144, 0.37191999),
-(41, 1, '2016-03-23 10:33:05', 144, 0.237380385),
-(42, 2, '2016-03-23 10:33:05', 144, 0.390699595);
+INSERT INTO `results_preferences` (`id`, `criteria`, `date`, `quest_id`, `value`) VALUES
+(180, 0, '2016-08-13 19:19:50', 0, 1),
+(184, 0, '2017-02-18 23:03:55', 144, 0.37191999),
+(185, 1, '2017-02-18 23:03:55', 144, 0.237380385),
+(186, 2, '2017-02-18 23:03:55', 144, 0.390699595);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struttura della tabella `results_suitability`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `results_suitability` (
+  `id` int(11) NOT NULL,
+  `quest_id` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `criteria` int(11) NOT NULL,
+  `alternative` varchar(1000) NOT NULL,
+  `value` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `results_suitability`
+--
+
+INSERT INTO `results_suitability` (`id`, `quest_id`, `date`, `criteria`, `alternative`, `value`) VALUES
+(1081, 144, '2017-02-18 23:03:56', 0, '0', 0.324120134),
+(1082, 144, '2017-02-18 23:03:56', 0, '1', 0.25180003),
+(1083, 144, '2017-02-18 23:03:56', 0, '2', 0.0693411008),
+(1084, 144, '2017-02-18 23:03:56', 0, '3', 0.151545733),
+(1085, 144, '2017-02-18 23:03:56', 0, '4', 0.134602696),
+(1086, 144, '2017-02-18 23:03:56', 0, '5', 0.0685902238),
+(1087, 144, '2017-02-18 23:03:56', 1, '0', 0.199935094),
+(1088, 144, '2017-02-18 23:03:56', 1, '1', 0.263872504),
+(1089, 144, '2017-02-18 23:03:56', 1, '2', 0.122180521),
+(1090, 144, '2017-02-18 23:03:56', 1, '3', 0.24672851),
+(1091, 144, '2017-02-18 23:03:56', 1, '4', 0.0644504204),
+(1092, 144, '2017-02-18 23:03:56', 1, '5', 0.102832928),
+(1093, 144, '2017-02-18 23:03:56', 2, '0', 0.212453172),
+(1094, 144, '2017-02-18 23:03:56', 2, '1', 0.194464371),
+(1095, 144, '2017-02-18 23:03:56', 2, '2', 0.15520294),
+(1096, 144, '2017-02-18 23:03:56', 2, '3', 0.187928125),
+(1097, 144, '2017-02-18 23:03:56', 2, '4', 0.135041788),
+(1098, 144, '2017-02-18 23:03:56', 2, '5', 0.114909634);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `user`
+--
+
+CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `first_name` text NOT NULL,
   `last_name` text NOT NULL,
   `email` char(30) NOT NULL,
-  `role` char(20) NOT NULL,
+  `role` char(20) NOT NULL COMMENT 'admin or user',
   `insert_date` datetime NOT NULL,
-  `quest_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
+  `quest_id` int(11) NOT NULL,
+  `salt` char(128) NOT NULL,
+  `password` char(128) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `field_expert` int(11) DEFAULT NULL COMMENT 'economic, engineer or other',
+  `age` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dump dei dati per la tabella `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `role`, `insert_date`, `quest_id`) VALUES
-(81, 'Test1', ' ', 'stanislaograzioso@gmail.com', '', '2015-12-01 15:13:30', 0),
-(82, 'Test2', ' ', 'stanislao.grazioso@unina.it', '', '2015-12-01 16:54:45', 0),
-(83, 'Test3', ' ', 'alessiobalsamo@hotmail.it', '', '2015-12-01 16:59:07', 0),
-(84, 'Test4', ' ', 'man.dimaio@gmail.com', '', '2015-12-01 18:00:25', 0),
-(85, 'Test5', ' ', 'man.dimaio@studenti.unina.it', '', '2015-12-01 18:03:38', 0),
-(86, 'Test6', ' ', 'cdimaio1953@gmail.com', '', '2015-12-01 18:06:50', 0),
-(87, 'Test7', ' ', 'crisd.didato@gmail.com', '', '2015-12-01 18:09:50', 0),
-(88, 'Giuseppe', ' ', 'giuseppe.digironimo@unina.it', '', '2015-12-02 13:22:57', 0),
-(89, 'sta', ' ', 'sg_90@hotmail.it', '', '2015-12-09 10:28:59', 0),
-(90, 'stani', ' ', 's@gmail.com', '', '2015-12-09 10:57:09', 0),
-(93, 'stanigrazios', ' ', 'sg@gmail.com', '', '2015-12-09 11:01:16', 0),
-(94, 'fff', ' ', 'ff@gmail.com', '', '2015-12-09 11:18:07', 0),
-(97, 'Manuele_tesi', ' ', 'm@gmail.com', '', '2015-12-09 11:37:14', 0),
-(98, 'wwe', ' ', 'pinco@pinwdo.it', '', '2016-01-30 13:55:53', 0),
-(101, 'jjjj', ' ', 'pinco@pinwdoj.it', '', '2016-03-23 10:17:38', 0);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `role`, `insert_date`, `quest_id`, `salt`, `password`, `username`, `field_expert`, `age`) VALUES
+(81, 'Test1', ' ', 'stanislaograzioso@gmail.com', '', '2015-12-01 15:13:30', 0, '', '', '', 49, 0),
+(82, 'Test2', ' ', 'stanislao.grazioso@unina.it', '', '2015-12-01 16:54:45', 0, '', '', '', 49, 0),
+(83, 'Test3', ' ', 'alessiobalsamo@hotmail.it', '', '2015-12-01 16:59:07', 0, '', '', '', 49, 0),
+(84, 'Test4', ' ', 'man.dimaio@gmail.com', '', '2015-12-01 18:00:25', 0, '', '', '', 49, 0),
+(85, 'Test5', ' ', 'man.dimaio@studenti.unina.it', '', '2015-12-01 18:03:38', 0, '', '', '', 49, 0),
+(86, 'Test6', ' ', 'cdimaio1953@gmail.com', '', '2015-12-01 18:06:50', 0, '', '', '', 49, 0),
+(87, 'Test7', ' ', 'crisd.didato@gmail.com', '', '2015-12-01 18:09:50', 0, '', '', '', 49, 0),
+(89, 'Test8', ' ', 'Test8@gmail.com', '', '2016-08-13 18:32:03', 0, '', '', '', 49, 0),
+(91, 'fffffffgggt', '', 'fff@it.jjjft', '', '2017-02-23 18:17:09', 0, '', '', '', 3, 99);
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `alternative`
+-- Indici per le tabelle `alternative`
 --
 ALTER TABLE `alternative`
   ADD PRIMARY KEY (`id`),
@@ -757,14 +942,14 @@ ALTER TABLE `alternative`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `criteria`
+-- Indici per le tabelle `criteria`
 --
 ALTER TABLE `criteria`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD UNIQUE KEY `uc_name_quest` (`quest_id`,`name`);
 
 --
--- Indexes for table `criteria_alternative`
+-- Indici per le tabelle `criteria_alternative`
 --
 ALTER TABLE `criteria_alternative`
   ADD UNIQUE KEY `id` (`id`) USING BTREE,
@@ -777,27 +962,33 @@ ALTER TABLE `criteria_alternative`
   ADD KEY `linguistic_id` (`linguistic_id`);
 
 --
--- Indexes for table `final_score`
+-- Indici per le tabelle `final_score`
 --
 ALTER TABLE `final_score`
   ADD PRIMARY KEY (`id`),
   ADD KEY `quest_id` (`quest_id`);
 
 --
--- Indexes for table `linguistic_scale`
+-- Indici per le tabelle `job_cat`
+--
+ALTER TABLE `job_cat`
+  ADD PRIMARY KEY (`job_id`);
+
+--
+-- Indici per le tabelle `linguistic_scale`
 --
 ALTER TABLE `linguistic_scale`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `questionnaire`
+-- Indici per le tabelle `questionnaire`
 --
 ALTER TABLE `questionnaire`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `questionnarie_user`
+-- Indici per le tabelle `questionnarie_user`
 --
 ALTER TABLE `questionnarie_user`
   ADD PRIMARY KEY (`id`),
@@ -805,7 +996,7 @@ ALTER TABLE `questionnarie_user`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `questions`
+-- Indici per le tabelle `questions`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`),
@@ -815,7 +1006,7 @@ ALTER TABLE `questions`
   ADD KEY `cr2` (`cr2`);
 
 --
--- Indexes for table `question_linguistic_scale`
+-- Indici per le tabelle `question_linguistic_scale`
 --
 ALTER TABLE `question_linguistic_scale`
   ADD PRIMARY KEY (`id`),
@@ -826,111 +1017,117 @@ ALTER TABLE `question_linguistic_scale`
   ADD KEY `quest_id` (`quest_id`);
 
 --
--- Indexes for table `results`
+-- Indici per le tabelle `results_preferences`
 --
-ALTER TABLE `results`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `quest_id` (`quest_id`);
-
---
--- Indexes for table `resultspreferences`
---
-ALTER TABLE `resultspreferences`
+ALTER TABLE `results_preferences`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `quest_id_2` (`quest_id`,`criteria`),
   ADD KEY `criteria` (`criteria`),
   ADD KEY `quest_id` (`quest_id`);
 
 --
--- Indexes for table `user`
+-- Indici per le tabelle `results_suitability`
+--
+ALTER TABLE `results_suitability`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quest_id` (`quest_id`);
+
+--
+-- Indici per le tabelle `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `quest_id` (`quest_id`);
+  ADD KEY `quest_id` (`quest_id`),
+  ADD KEY `cat_user_idx` (`field_expert`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `alternative`
+-- AUTO_INCREMENT per la tabella `alternative`
 --
 ALTER TABLE `alternative`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 --
--- AUTO_INCREMENT for table `criteria`
+-- AUTO_INCREMENT per la tabella `criteria`
 --
 ALTER TABLE `criteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
--- AUTO_INCREMENT for table `criteria_alternative`
+-- AUTO_INCREMENT per la tabella `criteria_alternative`
 --
 ALTER TABLE `criteria_alternative`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=610;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=604;
 --
--- AUTO_INCREMENT for table `final_score`
+-- AUTO_INCREMENT per la tabella `final_score`
 --
 ALTER TABLE `final_score`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=367;
 --
--- AUTO_INCREMENT for table `linguistic_scale`
+-- AUTO_INCREMENT per la tabella `job_cat`
+--
+ALTER TABLE `job_cat`
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+--
+-- AUTO_INCREMENT per la tabella `linguistic_scale`
 --
 ALTER TABLE `linguistic_scale`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `questionnaire`
+-- AUTO_INCREMENT per la tabella `questionnaire`
 --
 ALTER TABLE `questionnaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=157;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 --
--- AUTO_INCREMENT for table `questionnarie_user`
+-- AUTO_INCREMENT per la tabella `questionnarie_user`
 --
 ALTER TABLE `questionnarie_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 --
--- AUTO_INCREMENT for table `questions`
+-- AUTO_INCREMENT per la tabella `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 --
--- AUTO_INCREMENT for table `question_linguistic_scale`
+-- AUTO_INCREMENT per la tabella `question_linguistic_scale`
 --
 ALTER TABLE `question_linguistic_scale`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=121;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 --
--- AUTO_INCREMENT for table `results`
+-- AUTO_INCREMENT per la tabella `results_preferences`
 --
-ALTER TABLE `results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=373;
+ALTER TABLE `results_preferences`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 --
--- AUTO_INCREMENT for table `resultspreferences`
+-- AUTO_INCREMENT per la tabella `results_suitability`
 --
-ALTER TABLE `resultspreferences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+ALTER TABLE `results_suitability`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1099;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `alternative`
+-- Limiti per la tabella `alternative`
 --
 ALTER TABLE `alternative`
   ADD CONSTRAINT `alternative_ibfk_1` FOREIGN KEY (`questionnaire_id`) REFERENCES `questionnaire` (`id`);
 
 --
--- Constraints for table `criteria`
+-- Limiti per la tabella `criteria`
 --
 ALTER TABLE `criteria`
   ADD CONSTRAINT `criteria_ibfk_1` FOREIGN KEY (`quest_id`) REFERENCES `questionnaire` (`id`);
 
 --
--- Constraints for table `criteria_alternative`
+-- Limiti per la tabella `criteria_alternative`
 --
 ALTER TABLE `criteria_alternative`
   ADD CONSTRAINT `criteria_alternative_ibfk_1` FOREIGN KEY (`questionnaire_id`) REFERENCES `questionnaire` (`id`),
@@ -941,14 +1138,14 @@ ALTER TABLE `criteria_alternative`
   ADD CONSTRAINT `criteria_alternative_ibfk_7` FOREIGN KEY (`alt2`) REFERENCES `alternative` (`id`);
 
 --
--- Constraints for table `questionnarie_user`
+-- Limiti per la tabella `questionnarie_user`
 --
 ALTER TABLE `questionnarie_user`
   ADD CONSTRAINT `questionnarie_user_ibfk_1` FOREIGN KEY (`quest_id`) REFERENCES `questionnaire` (`id`),
   ADD CONSTRAINT `questionnarie_user_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Constraints for table `question_linguistic_scale`
+-- Limiti per la tabella `question_linguistic_scale`
 --
 ALTER TABLE `question_linguistic_scale`
   ADD CONSTRAINT `question_linguistic_scale_ibfk_1` FOREIGN KEY (`questions_id`) REFERENCES `questions` (`id`),
