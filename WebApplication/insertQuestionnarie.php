@@ -67,6 +67,33 @@
 			$last_quest_id = $conn->insert_id;
 		}
 	}
+	if (isset($_POST['action']) && $_POST['action'] == 'deleteQuestionnaire') {
+	
+		$id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+		if ($id > 0) {
+			
+			/*
+			$query = "SELECT * FROM questionnaire where WHERE id=".$id." and elaborated = 0 ";									
+			if ($result=mysqli_query($con,$query))
+			{
+				// Return the number of rows in result set
+				$rowcount=mysqli_num_rows($result);
+				printf("Result set has %d rows.\n",$rowcount);
+				// Free result set
+				mysqli_free_result($result);
+			}
+			*/
+			
+			
+			$query = "DELETE FROM questionnaire WHERE id=".$id." and elaborated = 0 LIMIT 1";
+			$result = mysqli_query($conn, $query);
+			
+			echo 'ok';
+		} else {
+			echo 'err';
+		}
+		exit; // finish execution since we only need the "ok" or "err" answers from the server.
+	}
 
 }
 ?>
@@ -154,19 +181,24 @@
 							 <th>Description</th>
 							 <th>Password</th>
 							 <th>Date</th>
+							 <th>Delete</th>
 						</tr>
 					  </thead>";
 				
 				$queryQuest = getAllQuest($conn);	
 				foreach ($queryQuest as $q){
-					echo "<tr><td>" . $q->id. "</td>
-							 	  <td>" . $q -> name. " </td>
-								  <td>" . $q -> description. "</td>
-								  <td>" . $q -> password. "</td>
-								  <td>" .$q -> date. "</td>
-								  <td>" . $q -> dir. " </td></tr>";
-					
+						echo '<tr><td>' . $q->id. '</td>
+							 	  <td>' . $q -> name. '</td>
+								  <td>' . $q -> description. '</td>
+								  <td>' . $q -> password. '</td>
+								  <td>' . $q -> date. '</td>
+								  <td>' . $q -> dir. ' </td>
+								  <td>' .'<button class="delete_questionnaire" data-id="' . $q->id . '"> Delete </button></td>
+						</tr>';
+			
+				
 				}
+				
 				echo "</table>";
 			?>
 			</div>
@@ -177,6 +209,27 @@
 		<?php include 'footer.php'; ?>
     </div>
  </body>
-  
+    <script>
+var currentRow, id;
+$(document).on('click','.delete_questionnaire',function(){
+    id = $(this).attr('data-id'); 				// Get the clicked id for deletion 
+    currentRow = $(this).closest('tr'); 		// Get a reference to the row that has the button we clicked
+    $.ajax({
+        type:'post',
+        url:location.pathname, 					// sending the request to the same page we're on right now
+        data:{'action':'deleteQuestionnaire','id':id},
+        success:function(response){
+            if (response == 'ok') {
+                // Hide the row nicely and remove it from the DOM once the animation is finished.
+                currentRow.slideUp(500,function(){
+                    currentRow.remove();
+                })
+            } else {
+                // throw an error modally to let the user know there was an error
+            }
+        }
+    })
+})
+</script>
  </html>
 
