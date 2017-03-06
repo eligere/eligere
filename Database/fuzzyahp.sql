@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 27, 2017 alle 16:46
+-- Creato il: Mar 06, 2017 alle 12:16
 -- Versione del server: 10.1.10-MariaDB
 -- Versione PHP: 5.5.33
 
@@ -48,12 +48,12 @@ INSERT INTO `alternative` (`id`, `name`, `description`, `date_insert`, `question
 (46, 'Alternative4', 'Alternative 4 Desc', '2015-10-29', 144, '', 'media/test/Alternative4', 'media/test/Alternative4/Prototipo4_render_.jpg'),
 (47, 'Alternative5', 'Alternative 5 Desc', '2015-10-29', 144, '', 'media/test/Alternative5', 'media/test/Alternative5/Prototipo5_render_.jpg'),
 (48, 'Alternative6', 'Alternative 6 Desc ', '2015-10-29', 144, '', 'media/test/Alternative6', 'media/test/Alternative6/Prototipo6_render_.jpg'),
-(87, 'ciao', 'ciao', '2017-02-18', 147, '', 'media/test4/ciao', 'media/test4/ciao/1.png'),
-(88, 'alt2', 'desc alt2', '2017-02-19', 156, '', 'media/ciao/alt2', 'media/ciao/alt2/1.png'),
-(89, 'ssdfsfe', 'efssf', '2017-02-19', 147, '', 'media/test4/ssdfsfe', 'media/test4/ssdfsfe/600px-Black_body.svg.png'),
-(90, 'alt1', 'descALT1', '2017-02-23', 158, '', 'media/NewQuest/alt1', 'media/NewQuest/alt1/cpu3.png'),
-(92, 'alt2', 'descALT2', '2017-02-23', 158, '', 'media/NewQuest/alt2', 'media/NewQuest/alt2/computer_pc_PNG7702.png'),
-(93, 'alt3', 'decALT3', '2017-02-23', 158, '', 'media/NewQuest/alt3', 'media/NewQuest/alt3/this-pc-computer-icon.png');
+(97, 'MEDROB', 'MEDROB', '2017-02-27', 161, '', 'media/Europeo/MEDROB', 'media/Europeo/MEDROB/download.png'),
+(98, 'REROB', 'REROB', '2017-02-27', 161, '', 'media/Europeo/REROB', 'media/Europeo/REROB/download.png'),
+(99, 'SOROB', 'SOROB', '2017-02-27', 161, '', 'media/Europeo/SOROB', 'media/Europeo/SOROB/download.png'),
+(101, 'alt1', 'desc alt1', '2017-03-06', 166, '', 'media/test2/alt1', 'media/test2/alt1/1.png'),
+(102, 'alt2', 'desc alt2', '2017-03-06', 166, '', 'media/test2/alt2', 'media/test2/alt2/this-pc-computer-icon.png'),
+(103, 'alt 2', 'desc alt 3', '2017-03-06', 166, '', 'media/test2/alt 2', 'media/test2/alt 2/600px-Black_body.svg.png');
 
 -- --------------------------------------------------------
 
@@ -77,14 +77,14 @@ INSERT INTO `criteria` (`id`, `name`, `description`, `date_insert`, `quest_id`) 
 (23, 'C1', 'Simplicity', '2015-10-29', 144),
 (24, 'C2', 'Aesthetic design', '2015-10-29', 144),
 (25, 'C3', 'Integrability with sensors and electronics', '2015-10-29', 144),
-(35, 'cr1', 'cr2', '2017-02-18', 147),
-(36, 'cr2', 'dddd', '2017-02-18', 147),
-(37, 'cr1', 'desc cr1', '2017-02-19', 156),
-(38, 'cr2', 'desc cr2', '2017-02-19', 156),
-(39, 'cr3', 'desc cr3', '2017-02-19', 156),
-(40, 'cr1', 'desc cr1', '2017-02-23', 158),
-(41, 'cr2', 'desc cr2', '2017-02-23', 158),
-(42, 'cr3', 'desc cr3', '2017-02-23', 158);
+(45, 'excellence', 'excellence', '2017-02-27', 161),
+(46, 'impact', 'impact', '2017-02-27', 161),
+(47, 'implementation', 'implementation', '2017-02-27', 161),
+(49, 'prova235', 'prova1 decription', '2017-03-04', 144),
+(50, 'cost', 'cost', '2017-03-05', 161),
+(53, 'cr1', ' desc cr1', '2017-03-06', 166),
+(54, 'cr2', 'desc cr2', '2017-03-06', 166),
+(55, 'cr3', 'desc cr3', '2017-03-06', 166);
 
 -- --------------------------------------------------------
 
@@ -422,7 +422,16 @@ INSERT INTO `criteria_alternative` (`id`, `alt1`, `alt2`, `cri_id`, `questionnai
 (600, 46, 48, 25, 144, 87, '2015-12-01 18:12:46', 6),
 (601, 47, 48, 23, 144, 87, '2015-12-01 18:12:46', 4),
 (602, 47, 48, 24, 144, 87, '2015-12-01 18:12:46', 4),
-(603, 47, 48, 25, 144, 87, '2015-12-01 18:12:46', 7);
+(603, 47, 48, 25, 144, 87, '2015-12-01 18:12:46', 7),
+(606, 101, 102, 53, 166, 98, '2017-03-06 12:10:13', 4),
+(607, 101, 102, 54, 166, 98, '2017-03-06 12:10:13', 4),
+(608, 101, 102, 55, 166, 98, '2017-03-06 12:10:13', 5),
+(609, 101, 103, 53, 166, 98, '2017-03-06 12:10:13', 7),
+(610, 101, 103, 54, 166, 98, '2017-03-06 12:10:13', 7),
+(611, 101, 103, 55, 166, 98, '2017-03-06 12:10:13', 7),
+(612, 102, 103, 53, 166, 98, '2017-03-06 12:10:13', 4),
+(613, 102, 103, 54, 166, 98, '2017-03-06 12:10:13', 4),
+(614, 102, 103, 55, 166, 98, '2017-03-06 12:10:13', 5);
 
 -- --------------------------------------------------------
 
@@ -725,9 +734,8 @@ CREATE TABLE `questionnaire` (
 
 INSERT INTO `questionnaire` (`id`, `name`, `description`, `date`, `complete`, `dir`, `password`, `elaborated`, `elaboration_date`) VALUES
 (144, 'test', 'test', '2015-10-29 13:32:24', b'0', 'media/test', 'test', b'1', '2017-02-18 23:03:56'),
-(147, 'test4', 'desc test', '2017-02-18 18:21:27', b'0', 'media/test4', 'test4', b'0', '0000-00-00 00:00:00'),
-(156, 'ciao', 'ciao', '2017-02-18 23:15:13', b'0', 'media/ciao', 'ciao', b'0', '0000-00-00 00:00:00'),
-(158, 'NewQuest', 'NEW QUEST', '2017-02-23 15:30:51', b'0', 'media/NewQuest', '1234', b'0', '0000-00-00 00:00:00');
+(161, 'Europeo', 'europeo desc', '2017-02-27 23:45:13', b'0', 'media/Europeo', 'europeo', b'0', '0000-00-00 00:00:00'),
+(166, 'test2', 'desc test2', '2017-03-06 12:00:05', b'1', 'media/test2', 'test2', b'0', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -755,7 +763,10 @@ INSERT INTO `questionnarie_user` (`id`, `quest_id`, `user_id`, `date`, `complete
 (70, 144, 85, '2015-12-01', 1),
 (71, 144, 86, '2015-12-01', 1),
 (72, 144, 87, '2015-12-01', 1),
-(89, 158, 91, '2017-02-23', 0);
+(73, 166, 95, '2017-03-06', 0),
+(74, 166, 96, '2017-03-06', 0),
+(75, 166, 97, '2017-03-06', 0),
+(76, 166, 98, '2017-03-06', 1);
 
 -- --------------------------------------------------------
 
@@ -781,12 +792,15 @@ INSERT INTO `questions` (`date`, `id`, `questionnaire`, `cr1`, `cr2`, `descripti
 ('2015-10-29 13:39:45', 44, 144, 23, 24, 'QP1', 'How important is the simplicity of the system when it is compared to aesthetic design?'),
 ('2015-10-29 13:39:45', 45, 144, 23, 25, 'QP2', 'How important is the simplicity of the system when it is compared to integrability with\r\nsensors and electronics?'),
 ('2015-10-29 13:39:45', 46, 144, 24, 25, 'QP3', 'How important is the aesthetic design of the system when it is compared to integrability\r\nwith sensors and electronics?'),
-('2017-02-23 14:45:33', 83, 156, 37, 39, 'fgt', 'fgtL'),
-('2017-02-23 14:45:46', 85, 156, 37, 38, '333', '444'),
-('2017-02-23 14:46:03', 86, 156, 38, 39, '1', '1'),
-('2017-02-23 15:32:46', 87, 158, 40, 41, 'lab1', 'desc quest 1'),
-('2017-02-23 15:32:58', 88, 158, 40, 42, 'lab2', 'desc quest 2'),
-('2017-02-23 15:33:04', 89, 158, 41, 42, 'lab3', 'desc quest 3');
+('2017-02-27 23:50:18', 93, 161, 45, 46, 'q1', 'How important is the excellence of the system when it is compared to impact?'),
+('2017-02-27 23:51:14', 94, 161, 45, 47, 'q2', 'How excellence is the excellence of the system when it is compared to implementation?'),
+('2017-02-27 23:51:39', 95, 161, 46, 47, 'q3', 'How important is the impact of the system when it is compared to implementation?'),
+('0000-00-00 00:00:00', 253, 161, 45, 50, 'C145C250', 'How important is the <b>excellence</b> of the system when it is compared to <b>cost</b> implementation?'),
+('0000-00-00 00:00:00', 255, 161, 46, 50, 'C146C250', 'How important is the <b>impact</b> of the system when it is compared to <b>cost</b> implementation?'),
+('0000-00-00 00:00:00', 408, 161, 47, 50, 'C147C250', 'How important is the <b>implementation</b> of the system when it is compared to <b>cost</b> implementation?'),
+('0000-00-00 00:00:00', 469, 166, 53, 54, 'C153C254', 'How important is the <b> desc cr1</b> of the system when it is compared to <b>desc cr2</b> implementation?'),
+('0000-00-00 00:00:00', 471, 166, 53, 55, 'C153C255', 'How important is the <b> desc cr1</b> of the system when it is compared to <b>desc cr3</b> implementation?'),
+('0000-00-00 00:00:00', 472, 166, 54, 55, 'C154C255', 'How important is the <b>desc cr2</b> of the system when it is compared to <b>desc cr3</b> implementation?');
 
 -- --------------------------------------------------------
 
@@ -827,7 +841,22 @@ INSERT INTO `question_linguistic_scale` (`id`, `questions_id`, `user`, `ling_sca
 (93, 46, 86, 6, 144),
 (94, 44, 87, 4, 144),
 (95, 45, 87, 6, 144),
-(96, 46, 87, 6, 144);
+(96, 46, 87, 6, 144),
+(98, 93, 94, 2, 161),
+(99, 94, 94, 2, 161),
+(100, 95, 94, 2, 161),
+(101, 469, 95, 3, 166),
+(102, 471, 95, 3, 166),
+(103, 472, 95, 3, 166),
+(107, 469, 96, 7, 166),
+(108, 471, 96, 5, 166),
+(109, 472, 96, 3, 166),
+(110, 469, 97, 2, 166),
+(111, 471, 97, 3, 166),
+(112, 472, 97, 4, 166),
+(116, 469, 98, 4, 166),
+(117, 471, 98, 5, 166),
+(118, 472, 98, 6, 166);
 
 -- --------------------------------------------------------
 
@@ -926,7 +955,12 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `role`, `insert_da
 (86, 'Test6', ' ', 'cdimaio1953@gmail.com', '', '2015-12-01 18:06:50', 0, '', '', '', 49, 0),
 (87, 'Test7', ' ', 'crisd.didato@gmail.com', '', '2015-12-01 18:09:50', 0, '', '', '', 49, 0),
 (89, 'Test8', ' ', 'Test8@gmail.com', '', '2016-08-13 18:32:03', 0, '', '', '', 49, 0),
-(91, 'fffffffgggt', '', 'fff@it.jjjft', '', '2017-02-23 18:17:09', 0, '', '', '', 3, 99);
+(92, 'europeo', '', 'd@it.ir', '', '2017-02-27 17:12:33', 0, '', '', '', 1, 33),
+(94, 'mat', '', 'ma@it.it', '', '2017-02-27 23:53:39', 0, '', '', '', 3, 34),
+(95, 'test2 ', '', 'test2@test2.it', '', '2017-03-06 12:01:57', 0, '', '', '', 3, 32),
+(96, 'test3', '', 'test3@test2.it', '', '2017-03-06 12:03:56', 0, '', '', '', 48, 33),
+(97, 'test4', '', 'test@test33.it', '', '2017-03-06 12:07:04', 0, '', '', '', 4, 36),
+(98, 'test6', '', 'test6@test6.it', '', '2017-03-06 12:09:30', 0, '', '', '', 63, 36);
 
 --
 -- Indici per le tabelle scaricate
@@ -1049,17 +1083,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT per la tabella `alternative`
 --
 ALTER TABLE `alternative`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 --
 -- AUTO_INCREMENT per la tabella `criteria`
 --
 ALTER TABLE `criteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT per la tabella `criteria_alternative`
 --
 ALTER TABLE `criteria_alternative`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=604;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=615;
 --
 -- AUTO_INCREMENT per la tabella `final_score`
 --
@@ -1079,22 +1113,22 @@ ALTER TABLE `linguistic_scale`
 -- AUTO_INCREMENT per la tabella `questionnaire`
 --
 ALTER TABLE `questionnaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 --
 -- AUTO_INCREMENT per la tabella `questionnarie_user`
 --
 ALTER TABLE `questionnarie_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT per la tabella `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=473;
 --
 -- AUTO_INCREMENT per la tabella `question_linguistic_scale`
 --
 ALTER TABLE `question_linguistic_scale`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 --
 -- AUTO_INCREMENT per la tabella `results_preferences`
 --
@@ -1109,7 +1143,7 @@ ALTER TABLE `results_suitability`
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 --
 -- Limiti per le tabelle scaricate
 --
