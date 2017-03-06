@@ -39,8 +39,11 @@ if ($_SESSION ['enableAdmin']) {
 	// connessione al db
 	if (isset ( $_POST ['nameQuestForCriteria'] )) {
 		$_SESSION ['id_quest'] = $_POST ['nameQuestForCriteria'];
-		surveyElaboration($_SESSION ['id_quest']);
-		sleep(5);
+
+		$success = surveyElaboration($_SESSION ['id_quest']);
+		sleep(5);	
+		
+
 	}
 	
 	$section1Array = getSection1 ( $conn, $_SESSION ['id_quest'] );
@@ -54,9 +57,20 @@ if ($_SESSION ['enableAdmin']) {
 
 
 <html lang="en">
-
 <?php include("header.html");?>
   
+<script>
+	
+	$(document).ready(function(){
+		
+		$("#submit").click(function(){
+			$("#myDiv").show();
+		});
+		
+	});
+	
+</script>
+
   <body>
 
 	<div class="container">
@@ -79,7 +93,7 @@ if ($_SESSION ['enableAdmin']) {
 	}
 	?>
 
-	<div class="row">
+	
 
 			
 	<div class="alert alert-success"></div>
@@ -92,7 +106,7 @@ if ($_SESSION ['enableAdmin']) {
 						<div class="form-group">
 							<label for="selectQuestId">Quest Name</label> <select
 								name="nameQuestForCriteria" required="required"
-								onchange="this.form.submit()" id="selectQuestId"
+								id="selectQuestId"
 								class="form-control">
 								<option value=""></option>			
 				<?php
@@ -105,14 +119,19 @@ if ($_SESSION ['enableAdmin']) {
 					}
 				}
 				?>			
-			</select>
+					</select>
 						</div>
-						<button type="submit" hidden="true" name="select_q"
+						<button id="submit" type="submit" hidden="true" name="select_q" 
 							class="btn btn-default">Select</button>
 					</form>
 
+					
 				</div>
+				
+				<div id ="myDiv" style="display:none"> Elaboration... <img id = "myImage" src = "images/ajax-loader.gif"></div>
+				
 
+				
 				</nav>
 
 
@@ -136,6 +155,11 @@ if ($_SESSION ['enableAdmin']) {
 					
 						if($alt->id == $q->alternative){
 					
+						
+						$php_array = array();
+						$php_array[] = $q->value;
+													
+					
 							echo "<tr>
 							<td>" . $q->id . "</td>
 							<td>" .
@@ -150,17 +174,20 @@ if ($_SESSION ['enableAdmin']) {
 						}
 					}
 			}
-			
-							 
+		    			 
 			
 			echo "</tbody></table></div>";
 		}else{
 			
 			echo "ERROR";
 			
-		}
-		
+		}	
 		?>
+
+		
+		<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+		</body>
 		
 		<div class="alert alert-success">Section 1: Preferences</div>
 	
@@ -183,6 +210,7 @@ if ($_SESSION ['enableAdmin']) {
 			echo "</tbody></table></div>";
 		}
 		?>
+	
 	
 		<div class="alert alert-success">Section 2: Suitability</div>
 		
@@ -213,12 +241,77 @@ if ($_SESSION ['enableAdmin']) {
 
 
 	</div>
-	</div>
 </div>
+
+
+
 </body>
+
+
+
+
     <div class="container">	
 		<?php include 'footer.php'; ?>
     </div>
 
 </html>
+				<script type="text/javascript">
+$(function () {
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'alternatives scores'
+        },
+        subtitle: {
+            text: 'Source: ELIGERE.com'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Percent (%)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Percent',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+			
+        }]
+    });
+});
 
+
+		
+		</script>

@@ -23,7 +23,7 @@
 ?>
 <!-- header -->
 
-<footer id="footer" class="pull_top ">
+<footer id="footer" class="panel-footer panel-custom">
 <div class="container-fluid">
     <div class="row sections">
       <div class="col-sm-4 recent_posts">

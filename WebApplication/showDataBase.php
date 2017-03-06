@@ -72,9 +72,15 @@
 			
 			$sql_delete1 = "DELETE FROM  criteria_alternative WHERE user_id=$id_user and questionnaire_id=$id_quest";
 			$sql_delete2 = "DELETE FROM question_linguistic_scale WHERE user=$id_user and quest_id=$id_quest";
-		    $sql_delete3 = "DELETE FROM resultspreferences WHERE quest_id=$id_quest";
-		    $sql_delete4 = "DELETE FROM results WHERE quest_id=$id_quest";
+		    $sql_delete3 = "DELETE FROM results_preferences WHERE quest_id=$id_quest";
+		    $sql_delete4 = "DELETE FROM results_suitability WHERE quest_id=$id_quest";
+			$sql_delete4 = "DELETE FROM final_score WHERE quest_id=$id_quest";			
 			$sql_delete5 = "DELETE FROM questionnarie_user WHERE user_id=$id_user and quest_id=$id_quest";
+			
+			//change the complete filed
+			$sql_update = "UPDATE questionnaire SET elaborated =0 WHERE id=$id_quest" ;
+
+			
 			
 			
 			if ($conn->query($sql_delete1) === TRUE) {	
@@ -102,6 +108,14 @@
 			} else {
 				$error = "Error: " . $sql_delete5 . "<br>" . $conn->error;
 			}
+			
+			if ($conn->query($sql_update) === TRUE) {	
+				$success = "Success Update.";
+			} else {
+				$error = "Error: " . $sql_update . "<br>" . $conn->error;
+			}
+			
+			
 			//TODO question_linguistic_scale
 			
 			
@@ -144,6 +158,7 @@
 		if($success != ''){			
 			echo "<div class='alert alert-success fade in'>";
 			echo "<h6>".$success."</h6>";
+			echo "<h6>The survey must be  re-elaborated.</h6>";
 			echo "</div>";
 		}
 	?>

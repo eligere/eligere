@@ -63,16 +63,20 @@ if(!isset($_SESSION))
 		?>
       <div class="row">
 	      <div class="col-md-4">
-		      <form class="form-signin" id = "login_form" action="main.php" method="POST">
+		      <form class="form-signin" id = "login_form" action="main.php" method="POST" autocomplete="on">
 		        	
-					<input type="text"    name="yourname" class="form-control" required="required"  placeholder="Name">
-		        	<input type="email"   name="email" required="required"  class="form-control" id="email" placeholder="Email address">     
-
+					<input type="text"    name="yourname" class="form-control" required="required"  placeholder="Name" >
+		        	
+					<input type="email"   name="email" required="required"  class="form-control" id="email" placeholder="Email address" >     
+					
 					<input type="text"    name="job" class="form-control" id="jobs" required="required"  placeholder="Occupation">
+					
 					<input type="hidden"  name="job_hidden_name" id="job_hidden" value="">
 			
-		        	<input type="password" id="inputPassword" name="passwordValue" class="form-control" placeholder="Password Survey" required=""> 
-		        	
+					<input type="number"  name="age" id="age" value="" class="form-control" required="required"  placeholder="Age" >
+			
+		        	<input type="password" id="inputPassword" name="passwordValue"  class="form-control" placeholder="Password Survey" required=""> 
+		        	</br>
 		        	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>		      	
 		      </form>
 	      </div>

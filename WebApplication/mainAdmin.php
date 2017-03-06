@@ -53,23 +53,20 @@ if(!isset($_SESSION))
        
 	  	<?php   	 		
 			if ($_SESSION['enableAdmin']){
-				//insert data
-				echo  "<div class='row'>
-	    				  <form class='form-inline' action='insertQuestionnarie.php'>
-					     	<button type='submit' name='add_alt' class='btn btn-default'>Insert New Survey</button>
-					     </form> 
-    				   </div>
-					   <div class='row'> 
-					     <form class='form-inline' action='showDataBase.php'>
-					     	<button type='submit' name='add_alt' class='btn btn-default'>data to be processed</button>     
-					     </form>
-    				   </div>
-					   <div class='row'> 
-					     <form class='form-inline' action='showDataElaborated.php'>
-					     	<button type='submit' name='add_alt' class='btn btn-default'>data eleborated</button>     
-					     </form>
-    				   </div>";
-							
+				
+				echo "<a href='insertQuestionnarie.php'>"; 
+				echo "<button class='btn btn-lg btn-primary btn-block' type='submit'>Insert New Survey</button>";
+				echo "</a><br>";
+				
+				echo "<a href='showDataBase.php'>"; 
+				echo "<button class='btn btn-lg btn-primary btn-block' type='submit'>Show Survey Data</button>";
+				echo "</a><br>";
+				
+				echo "<a href='showDataElaborated.php'>"; 
+				echo "<button class='btn btn-lg btn-primary btn-block' type='submit'>Show Survey Result</button>";
+				echo "</a><br>";
+				
+						
 			}
 	  	
 		

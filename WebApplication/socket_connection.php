@@ -24,30 +24,64 @@ if (! isset ( $_SESSION )) {
  
 function surveyElaboration($idQuest){ 
 
-	$fp = fsockopen("127.0.0.1", 8086, $errno, $errstr, 30);
-
-	$vars = array(
-		'id_quest' => $idQuest
-	);
-	$content = http_build_query($vars);
 
 
-	fwrite($fp, $content);
+		$fp = fsockopen("127.0.0.1", 8086, $errno, $errstr, 30);
 
-	if (!$fp) {
-		echo "$errstr ($errno)<br />\n";
-	} else {
-		
-		while (!feof($fp)) {
-			echo fgets($fp, 1024);
+		$vars = array(
+			'id_quest' => $idQuest
+		);
+		$content = http_build_query($vars);
+
+
+		fwrite($fp, $content);
+
+		if (!$fp) {
+			return "$errstr ($errno)<br />\n";
+		} else {
+			
+			while (!feof($fp)) {
+				return fgets($fp, 1024);
+			}
+			fclose($fp);
 		}
-		fclose($fp);
-	}
-	
-	
-	
+		
+		return "";
+
 
 }
+
+
+function chkServer($host, $port) 
+{   
+
+	$connection_ok = 0;
+    $hostip = @gethostbyname($host); // resloves IP from Hostname returns hostname on failure 
+    
+    if ($hostip == $host) // if the IP is not resloved 
+    { 
+        echo "Fuzzy ahp engine server is down"; 
+    } 
+    else 
+    { 
+        if (!$x = @fsockopen($hostip, $port, $errno, $errstr, 5)) // attempt to connect 
+        { 
+            echo "Fuzzy ahp engine server is down"; 
+        } 
+        else 
+        { 
+			$connection_ok = 1;
+            echo "Fuzzy ahp engine server is up"; 
+            if ($x) 
+            { 
+                @fclose($x); //close connection 
+            } 
+        }  
+    }
+	return $connection_ok;
+	
+} 
+
 
 
 ?>

@@ -65,8 +65,10 @@ if(!isset($_SESSION))
 				$Risposta = "r".(string)$count;
 			}
 			
-			if($response == 1)
+			if($response == 1){
 				$success = ' $count Record inseriti con successo';
+				header("Location: getSuitability.php");
+			}
 
 	}
 	
@@ -102,8 +104,8 @@ if(!isset($_SESSION))
 			echo "<div class='alert alert-success fade in'>";
 			echo "<h6>".$success."</h6>";
 			echo "</div>";
-			sleep(3);
-			header("location:getSuitability.php");
+			sleep(2);
+			header("Location: getSuitability.php");
 		}
 	?>
 

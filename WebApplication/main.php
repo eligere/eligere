@@ -37,7 +37,7 @@ if(!isset($_SESSION))
 		
 		
 		if(isset($_POST['email']))
-			$_SESSION['email_session']      = $_POST['email'];
+			$_SESSION['email_session'] = $_POST['email'];
 		if(isset($_POST['yourname']))
 			$_SESSION['yourname_session']   = $_POST["yourname"];
 		
@@ -61,14 +61,12 @@ if(!isset($_SESSION))
 						 
 		} else {			
 		
-			
-			
-			$nameSession = $_SESSION[yourname_session];
-			$mailSession = $_SESSION[email_session];		
+			$nameSession = $_SESSION['yourname_session'];
+			$mailSession = $_SESSION['email_session'];		
 			
 			$sql_user = "INSERT INTO user (first_name, email, insert_date, field_expert, age)
 			VALUES ('$nameSession','$mailSession','$today', $job_cat, $age )";
-			
+			//printf($sql_user);
 			if ($conn->query($sql_user) === TRUE) {
 				 $success =  "RECORD INSERITO CON SUCCESSO";
 			} else {
