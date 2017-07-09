@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>852</width>
+    <height>954</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1677721</width>
+    <height>1677721</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>questionnarie</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="questionnarie">
+        <property name="maximumSize">
+         <size>
+          <width>335</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>IBeamCursor</cursorShape>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="questOK">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>45</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Ok</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="6">
+       <widget class="QPushButton" name="pushButton_Ok">
+        <property name="text">
+         <string>Ok</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSpinBox" name="spinBox_Criteria">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QSpinBox" name="spinBox_Surveyed">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_Alternatives">
+        <property name="text">
+         <string>Alternatives: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="label_Surveyed">
+        <property name="text">
+         <string>Surveyed:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QSpinBox" name="spinBox_Alternatives">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_Criteria">
+        <property name="text">
+         <string>Criteria:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_section1">
+      <property name="text">
+       <string>SECTION 1: 'Preferences'</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_section2">
+      <property name="text">
+       <string>SECTION 2: 'Suitability'</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>832</width>
+         <height>69</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetNoConstraint</enum>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_section1_surveyedNumber">
+        <property name="text">
+         <string>Surveyed number:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox_section1_surveyedNumber">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+        <property name="singleStep">
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_section1_saveTheResults">
+        <property name="text">
+         <string>SECTION 1: Save The Results</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_section1_toNextSurveyed">
+        <property name="text">
+         <string>SECTION 1: Go To Next Surveyed</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_section1_endSurveyed">
+        <property name="text">
+         <string>[SECTION 1] Save The Results for the last surveyed. Then, push on 'SECTION 1: Do Calculation' to do calculus</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>829</width>
+          <height>30</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_section2_surveyedNumber">
+        <property name="text">
+         <string>Surveyed number:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox_section2_surveyedNumber">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_section2_criterionNumber">
+        <property name="text">
+         <string>Criterion number:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox_section2_criterionNumber">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_section2_saveTheResults">
+        <property name="text">
+         <string>SECTION 2: Save The Results</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_section2_toNextCriterion">
+        <property name="text">
+         <string>SECTION 2: Go To Next Criterion</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_section2_endCriterion">
+        <property name="text">
+         <string>[SECTION 2] Save The Results for the last criterion. Then, push on 'SECTION 2: Go To Next Surveyed' </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_section2_toNextSurveyed">
+        <property name="text">
+         <string>SECTION 2: Go To Next Surveyed</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_section2_endSurveyed">
+        <property name="text">
+         <string>[SECTION 2] Save The Results for the last surveyed. Then, push on 'SECTION 2: Do Calculation' to do calculus</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_section1_calculations">
+        <property name="text">
+         <string>SECTION 1: Do Calculations</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_section2_calculations">
+        <property name="text">
+         <string>SECTION 2: Do Calculations</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="fuzzyResultsOnscreen"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>852</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFuzzy_AHP">
+    <property name="title">
+     <string>Fuzzy AHP</string>
+    </property>
+   </widget>
+   <addaction name="menuFuzzy_AHP"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

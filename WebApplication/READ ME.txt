@@ -1,0 +1,16 @@
+READ ME - WEB APPLICATION
+
+REQUIRED:
+- XAMPP https://www.apachefriends.org/:  download + installing + starting (IF open, close Skype. They require the same port 8080)
+										 apache	start
+										 mysql	start
+
+WEB APPLICATION:
+
+1) copy this folder (.../eligere/WebApplication) in C:/xampp/htdocs/
+
+2) open a web browser and type: http://localhost/WebApplication/
+
+
+User:adim
+Pwd:admin

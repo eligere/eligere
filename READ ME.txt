@@ -1,0 +1,8 @@
+ELIGERE READ ME
+
+Database: Database to upload on MySQL
+FAHPcore: Fuzzy AHP computational module (to be used also stand-alone)
+FAHPcore-network: Fuzzy AHP computational module to be used for the automatic computational
+WebApplication: Eligere web pages
+
+Please, refer to the READ ME in each folder

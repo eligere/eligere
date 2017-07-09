@@ -1,0 +1,14 @@
+READ ME - DATABASE
+
+REQUIRED:
+- XAMPP https://www.apachefriends.org/:  download + installing + starting (IF open, close Skype. They require the same port 8080)
+										 apache	start
+										 mysql	start
+
+DATABASE:
+
+1) create a new database mysql called fuzzyahp
+
+	xampp control panel->mysql->admin(http://localhost/phpmyadmin/)->
+	database->create database(name it "fuzzyahp")->
+	import->choose file->.../eligere/Database/fuzzyahp.sql 
