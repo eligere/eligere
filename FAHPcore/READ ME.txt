@@ -104,6 +104,7 @@ db.setPassword("");
             qDebug() << qry.lastError().text();
         else
             qDebug( "Inserted!" );
-
-
     }
+    
+Stanislao Grazioso: stanislao.grazioso@unina.it
+Mateusz Gospodarczyk: mateusz@gospodarczyk@uniroma2.it
