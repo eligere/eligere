@@ -11,4 +11,7 @@ DATABASE:
 
 	xampp control panel->mysql->admin(http://localhost/phpmyadmin/)->
 	database->create database(name it "fuzzyahp")->
-	import->choose file->.../eligere/Database/fuzzyahp.sql 
+	import->choose file->.../eligere/Database/fuzzyahp.sql
+	
+Stanislao Grazioso: stanislao.grazioso@unina.it
+Mateusz Gospodarczyk: mateusz@gospodarczyk@uniroma2.it
