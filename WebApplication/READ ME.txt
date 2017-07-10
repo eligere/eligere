@@ -14,3 +14,6 @@ WEB APPLICATION:
 
 User:adim
 Pwd:admin
+
+Stanislao Grazioso: stanislao.grazioso@unina.it
+Mateusz Gospodarczyk: mateusz@gospodarczyk@uniroma2.it
