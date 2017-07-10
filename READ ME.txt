@@ -6,3 +6,6 @@ FAHPcore-network: Fuzzy AHP computational module to be used for the automatic co
 WebApplication: Eligere web pages
 
 Please, refer to the READ ME in each folder
+
+Stanislao Grazioso: stanislao.grazioso@unina.it
+Mateusz Gospodarczyk: mateusz@gospodarczyk@uniroma2.it
